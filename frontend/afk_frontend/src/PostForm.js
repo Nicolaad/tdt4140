@@ -8,9 +8,9 @@ class PostForm extends React.Component {
         super(props)
 
         this.state = {
-            userID: '',
-            title: '',
-            body: ''
+            username: '',
+            email: '',
+            password: ''
         }
     }
 
@@ -22,9 +22,12 @@ class PostForm extends React.Component {
         e.preventDefault()
         console.log(this.state)
         axios
-            .post('https://jsonplaceholder.typicode.com/posts', this.state)
+            .post('http://127.0.0.1:8000/users/', this.state)
             .then(response => {
                 console.log(response)
+                if (response.status == 201) {
+                    alert("User Created");
+                }
             })
             .catch(error => {
                 console.log(error)
@@ -32,7 +35,7 @@ class PostForm extends React.Component {
     }
 
     render() {
-        const { userID, title, body } = this.state;
+        const { username, email, password } = this.state;
         return (
             <div className="field">
                 <h1>Registrer bruker</h1>
@@ -41,24 +44,24 @@ class PostForm extends React.Component {
                         <h2>Brukernavn</h2>
                         <input 
                         type="text" 
-                        name="userID" 
-                        value = {userID}
+                        name="username" 
+                        value = {username}
                         onChange = {this.changeHandler}/>
                     </div>
                     <div>
                         <h2>Email</h2>
                         <input 
                         type="text" 
-                        name="title" 
-                        value = {title}
+                        name="email" 
+                        value = {email}
                         onChange = {this.changeHandler}/>
                     </div>
                     <div>
                         <h2>Passord</h2>
                         <input 
                         type="password" 
-                        name="body" 
-                        value = {body}
+                        name="password" 
+                        value = {password}
                         onChange = {this.changeHandler}/>
                     </div>
                     <button type="submit">Submit</button>
