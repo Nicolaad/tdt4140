@@ -1,0 +1,38 @@
+.popup {  
+    position: fixed;  
+    width: 25%;  
+    height: 60%;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;
+    margin: auto;  
+    border-radius: 8px;
+    border-style: solid;
+    background-color: lightblue;
+
+  }  
+  
+  .popup\_inner {  
+    position: absolute;
+    margin: auto;  
+    border-radius: 20px;  
+    background: white;  
+  }
+  
+  .button2{
+    text-align: center;
+    font-size: medium;
+    border-radius: 3px;
+    width: 90%;
+    border: 1px solid;
+    background-color: dodgerblue;
+    color: white;
+    transition-duration: 1px;
+    
+  }
+  
+  .button2:hover{
+    color: white;
+    background-color: #42a5f5;
+  }
