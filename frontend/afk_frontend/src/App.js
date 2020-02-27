@@ -1,5 +1,5 @@
-import React from 'react';
-import PostForm from "./PostForm";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Login from './Login';
 
 class App extends Component{  
