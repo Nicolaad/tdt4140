@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import "./PostForm.css";
 
 class PostForm extends React.Component {
 
@@ -64,7 +63,7 @@ class PostForm extends React.Component {
                         value = {password}
                         onChange = {this.changeHandler}/>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button className = "register-button" type="submit">Submit</button>
                 </form>
             </div>
         )
