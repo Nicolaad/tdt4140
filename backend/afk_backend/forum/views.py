@@ -14,9 +14,11 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
-    @action(detail=True, methods=['post'],)
-    def post(self, request, format=None):
-        serializer = UserSerializerWithToken(data=request.data)
+    def create(self, request, *args, **kwargs):
+        serializer_context = {
+            'request': request,
+        }
+        serializer = UserSerializerWithToken(data=request.data,context=serializer_context)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
