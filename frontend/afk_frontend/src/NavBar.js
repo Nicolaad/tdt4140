@@ -9,7 +9,10 @@ class NavBar extends Component {
     return (
       <div className = "navBar">
         <div className = "login">
-            <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<Login />} />
+          {this.props.isAuthenticated ? 
+              <button onClick={this.props.authenticateFunction}>Logg ut</button>
+              :
+              <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<Login authenticateFunction={this.props.authenticateFunction} /> } />}
             <Modal modalProps={{triggerText: "Register bruker"}} modalContent={<PostForm />} />
         </div>
       </div>

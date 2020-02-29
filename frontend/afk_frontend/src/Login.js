@@ -11,6 +11,7 @@ export default class Login extends Component{
         }
     }
 
+    
     changeHandler = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
@@ -24,8 +25,12 @@ export default class Login extends Component{
         .post(apiBaseUrl, this.state)
         .then(response => {
             console.log(response)
-            if (response.status == 201) {
+            if (response.status == 200) {
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('username', response.data.user.username)
+                this.props.authenticateFunction()
                 alert("Du er logget inn");
+
             }
         })
         .catch(error => {
