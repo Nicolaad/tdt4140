@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
-import './Login.css';
+//import './Login.css'; temp removed, as it need fixing
 
 export default class Login extends Component{
     constructor(props) {
