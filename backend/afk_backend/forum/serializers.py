@@ -4,13 +4,12 @@ from django.contrib.auth.models import User, Group
 from rest_framework_jwt.settings import api_settings
 
 class ThreadSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True)
+    ownername = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Thread
         fields = '__all__'
-
-
-
-
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
