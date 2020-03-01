@@ -1,10 +1,8 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from afk_backend.forum.serializers import UserSerializer, GroupSerializer
-from rest_framework import permissions, status
+from django.contrib.auth.models import User, Group, Thread
+from afk_backend.forum.serializers import UserSerializer, GroupSerializer, ThreadSerializer, UserSerializerWithToken
+from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
-from .serializers import UserSerializer, UserSerializerWithToken
 from rest_framework.decorators import action
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -33,4 +31,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-# Create your views here.
+
+class ThreadViewSet(viewsets.ModelViewSet):
+    queryset = Thread.objects.all()
+    serializer_class = ThreadSerializer

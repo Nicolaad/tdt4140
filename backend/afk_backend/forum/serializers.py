@@ -1,5 +1,12 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from afk_backend.forum.models import Thread
+from django.contrib.auth.models import User, Group
+
+class ThreadSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Thread
+        fields = '__all__'
+
 
 ##Authentication
 from rest_framework_jwt.settings import api_settings
@@ -41,4 +48,5 @@ class UserSerializerWithToken(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['url','token', 'username', 'password', 'email']
+
 
