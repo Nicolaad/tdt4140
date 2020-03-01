@@ -288,4 +288,7 @@ sketch
 # log files
 userlog.txt
 
+### vscode ####
+.vscode
+
 # End of https://www.gitignore.io/api/node,react,django,python
