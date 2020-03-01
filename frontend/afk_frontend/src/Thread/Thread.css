@@ -1,0 +1,12 @@
+.threadBody {
+    width: 650px;
+    margin: auto;
+    border: 1px solid rgba(64, 78, 85, 0.815);
+    border-radius: 17px;
+    background-color: #162126;
+    color: #FDFFFF;
+}
+
+.threadBody:hover {
+    border-color: #FDFFFF;
+}

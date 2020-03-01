@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "./Modal/Modal";
 import ThreadPost from "./Thread/ThreadPost";
 import "./Body.css";
+import Thread from "./Thread/Thread";
 
 class Body extends React.Component {
 
@@ -13,6 +14,7 @@ class Body extends React.Component {
                     modalProps={{triggerText: "Opprett tråd"}} 
                     modalContent={<ThreadPost />} />
                 </div>
+                <Thread />
             </div>
         )
     }

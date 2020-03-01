@@ -30,7 +30,7 @@ body {
 .modal-button:hover {
   background: #FDFFFF;
   color: #080705;
-  border: 1px solid #080705;
+  border: 1px solid rgba(64, 78, 85, 0.815);
 }
 .modal-button:focus {
   outline: 0;
