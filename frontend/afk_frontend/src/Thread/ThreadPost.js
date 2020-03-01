@@ -24,7 +24,6 @@ class ThreadPost extends React.Component {
             //eg :
             Authorization: 'JWT '+ localStorage.getItem('token')
          }} 
-        console.log(yourConfig)
         axios
             .post('http://127.0.0.1:8000/threads/', this.state, yourConfig)
             .then(response => {
