@@ -26,20 +26,22 @@ class App extends Component {
   }
   render() {
     return (
-
-
       <div className="App">
         {this.state.isAuthenticated ? 
           <div>
-            <NavBar username={this.state.username} isAuthenticated={true} authenticateFunction={()=> this.deAuthenticate()}></NavBar>
+            <NavBar 
+            username={this.state.username} 
+            isAuthenticated={true} 
+            authenticateFunction={()=> this.deAuthenticate()}></NavBar>
           </div>
           :
           <div>
-          <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}></NavBar>
+            <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}></NavBar>
+            
           </div>
-        }
-          <Body />
-         
+          }
+          <Body isAuthenticated={this.state.isAuthenticated} />
+        
       </div>
     );
   }

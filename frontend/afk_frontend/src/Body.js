@@ -6,14 +6,20 @@ import Thread from "./Thread/Thread";
 
 class Body extends React.Component {
 
+
     render () {
         return (
             <div className="contentBody">
-                <div className="threadCreateButton">
-                    <Modal
-                    modalProps={{triggerText: "Opprett tråd"}} 
-                    modalContent={<ThreadPost />} />
-                </div>
+                {this.props.isAuthenticated ? 
+                 <div className="threadCreateButton">
+                 <Modal
+                 modalProps={{triggerText: "Opprett tråd"}} 
+                 modalContent={<ThreadPost />} />
+             </div>
+             :
+             <div></div>
+             }
+               
                 <Thread />
             </div>
         )

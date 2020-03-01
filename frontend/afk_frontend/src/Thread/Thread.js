@@ -1,8 +1,9 @@
 import React from "react";
 import "./Thread.css";
 
-class Thread extends React.Component {
-    render() {
+
+
+function Thread(props) {
         return (
             <div className="threadBody">
                 <h2>Tittel</h2>
@@ -12,6 +13,5 @@ class Thread extends React.Component {
             </div>
         )
     }
-}
 
 export default Thread;
