@@ -5,6 +5,8 @@ from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from afk_backend.forum.models import Thread
+from  rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -36,3 +38,15 @@ class GroupViewSet(viewsets.ModelViewSet):
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
+    authentication_classes=(JSONWebTokenAuthentication,)
+
+    def create(self, request):
+        serializer_context = {
+            'request': request,
+        }
+        serializer = ThreadSerializer(data=request.data,context=serializer_context)
+        if serializer.is_valid():
+            serializer.save(owner=self.request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

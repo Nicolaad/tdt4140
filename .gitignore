@@ -291,4 +291,7 @@ userlog.txt
 ### vscode ####
 .vscode
 
+### Django database ###
+backend/afk_backend/forum/migrations/
+
 # End of https://www.gitignore.io/api/node,react,django,python
