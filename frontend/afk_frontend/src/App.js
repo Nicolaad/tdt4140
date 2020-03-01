@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./NavBar";
+import ThreadPost from "./Thread/ThreadPost";
+import Modal from "./Modal/Modal";
 
 class App extends Component {
   constructor(props){
@@ -29,16 +31,17 @@ class App extends Component {
 
       <div className="App">
         {this.state.isAuthenticated ? 
-        <div>
-          <h1>Hei {this.state.username}</h1>
-          <NavBar isAuthenticated={true} authenticateFunction={()=> this.deAuthenticate()}></NavBar>
-        </div>
-        :
-        <div>
-        <h1>vennligst logg inn</h1>
-        <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}></NavBar>
-        </div>
+          <div>
+            <h1>Hei {this.state.username}</h1>
+            <NavBar isAuthenticated={true} authenticateFunction={()=> this.deAuthenticate()}></NavBar>
+          </div>
+          :
+          <div>
+          <h1>vennligst logg inn</h1>
+          <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}></NavBar>
+          </div>
         }
+         <Modal modalProps={{triggerText: "Opprett tråd"}} modalContent={<ThreadPost />} />
       </div>
     );
   }
