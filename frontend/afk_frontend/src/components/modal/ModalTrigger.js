@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./components/modal/Modal.css";
+import "./Modal.css";
+
 class ModalTrigger extends Component {
   render() {
     return (

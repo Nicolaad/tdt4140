@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Modal from "./components/modal/Modal";
-import PostForm from "./components/registerUser/PostForm";
-import "./components/navBar/NavBar.css";
+import Modal from "../modal/Modal";
+import PostForm from "../registerUser/PostForm";
+import "./NavBar.css";
 
 class NavBar extends Component {
   render() {

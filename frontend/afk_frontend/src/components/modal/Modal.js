@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import ModalContent from "./components/modal/ModalContent";
-import ModalTrigger from "./components/modal/ModalTrigger";
+import ModalContent from "./ModalContent";
+import ModalTrigger from "./ModalTrigger";
+
 export class Modal extends Component {
   constructor() {
     super();
