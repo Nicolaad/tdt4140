@@ -57,10 +57,10 @@ class ThreadPost extends React.Component {
                 <textarea
                     rows="12"
                     cols="70"
-                    name="threadContent"
+                    name="postContent"
                     form="threadPost"
                     placeholder="Skriv her..."
-                    id = "threadContent"
+                    id = "postContent"
                     onChange= {this.changeHandler}>{text}
                 </textarea>
                 <button 
