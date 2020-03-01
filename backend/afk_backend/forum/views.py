@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User, Group, Thread
+from django.contrib.auth.models import User, Group
 from afk_backend.forum.serializers import UserSerializer, GroupSerializer, ThreadSerializer, UserSerializerWithToken
 from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from afk_backend.forum.models import Thread
 
 class UserViewSet(viewsets.ModelViewSet):
     """
