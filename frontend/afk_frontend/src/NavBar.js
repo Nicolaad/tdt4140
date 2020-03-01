@@ -11,13 +11,13 @@ class NavBar extends Component {
         <div className = "login">
           {this.props.isAuthenticated ? 
             <div>
-              <button onClick={this.props.authenticateFunction} id="logout">Logg ut</button>
-               <h3>Hei {this.props.username}</h3>
+              <button className="button2" onClick={this.props.authenticateFunction} id="logout">Logg ut</button>
+              <button className="button2" >{this.props.username}</button>
             </div>
               :
             <div>
               <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<Login authenticateFunction={this.props.authenticateFunction} /> } />
-              <Modal modalProps={{triggerText: "Register bruker"}} modalContent={<PostForm />} />
+              <Modal modalProps={{triggerText: "Registrer bruker"}} modalContent={<PostForm />} />
             </div>
           }
         </div>

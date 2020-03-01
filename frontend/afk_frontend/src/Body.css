@@ -10,3 +10,61 @@
     width: 700px;
     height: auto;
 }
+
+.inputbox {
+    border-color: #E6E8E8;
+    border-radius: 5px;
+    background-color: #E6E8E8;
+    padding: 5px;
+    font-size: medium;
+    
+}
+
+.inputbox:focus {
+    outline: 0;
+    box-shadow: 0 0 4px currentColor;
+}
+
+
+#brukernavnregistrer {
+    margin-bottom: 20px;
+}
+
+.registerDiv {
+    text-align: center;
+}
+
+.button1 {
+  color: #FDFFFF;
+  padding: 6px;
+  font-size: 0.9em;
+  font-weight: bold;
+  background: #1E1D1B;
+  border: 1px solid #FDFFFF(255, 255, 255);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease-out;
+}
+
+button:hover {
+    background: #FDFFFF;
+    color: #080705;
+    border: 1px solid rgba(64, 78, 85, 0.815);
+  }
+
+button:focus {
+outline: 0;
+box-shadow: 0 0 4px currentColor;
+}
+
+.button2 {
+    color: #FDFFFF;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: #1E1D1B;
+    border: 1px solid #FDFFFF(255, 255, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease-out;
+}

@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import axios from 'axios';
+import "./Login.css";
+import "./Body.css";
 //import './Login.css'; temp removed, as it need fixing
 
 export default class Login extends Component{
@@ -40,23 +42,28 @@ export default class Login extends Component{
     
     render(){
         return(
-          <div className="popup">
-            <div className="popup\_inner">
-              <span>
-                <div id = "content">
-                  <h1>Innlogging</h1>
-                  <label htmlFor = "username">Brukernavn</label>
-                  <input type = "text" name = "username" placeholder = "Skriv her..." onChange = {this.changeHandler}/>
-                  <br/>
-                  <label htmlFor = "password">Passord</label>
-                  <input type = "password" name = "password" placeholder = "Skriv her..."  onChange = {this.changeHandler}/> 
-                  <br />       
-                  <br />
-                  <button className = "button2" type = "button" onClick={this.handleFormSubmit}> Logg inn </button>
+                <div className="loginDiv">
+                    <h1>Innlogging</h1>
+                    <label htmlFor = "username">Brukernavn</label>
+                    <br />
+                    <input 
+                        id="brukernavnregistrer"
+                        type = "text" 
+                        name = "username" 
+                        className = "inputbox"
+                        onChange = {this.changeHandler}/>
+                    <br />
+                    <label htmlFor = "password">Passord</label>
+                    <br />
+                    <input 
+                        type = "password" 
+                        name = "password"  
+                        className = "inputbox"
+                        onChange = {this.changeHandler}/> 
+                    <br />       
+                    <br />
+                    <button className = "button1" type = "button" onClick={this.handleFormSubmit}> Logg inn </button>
                 </div>
-                </span>
-            </div> 
-          </div>
       );
     }
 }

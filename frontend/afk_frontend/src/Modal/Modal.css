@@ -1,4 +1,5 @@
 body {
+  color: #FDFFFF;
   background-color: #080705;
   margin: 0;
   padding: 0;
@@ -55,7 +56,9 @@ body {
   width: 100%;
   height: 100%;
   padding: 2.5em 1.5em 1.5em 1.5em;
-  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #FDFFFF;
+  background-color: #162126;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -64,6 +67,7 @@ body {
 @media screen and (min-width: 500px) {
   /* Center the Modal! */
   .modal-area {
+    background-color: #162126;
     left: 50%;
     top: 50%;
     height: auto;
@@ -95,6 +99,7 @@ body {
 }
 
 .modal-body {
+  background-color: #162126;
   padding-top: 0.25em;
 }
 ._hide-visual {

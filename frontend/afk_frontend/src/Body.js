@@ -6,7 +6,6 @@ import Thread from "./Thread/Thread";
 
 class Body extends React.Component {
 
-
     render () {
         return (
             <div className="contentBody">
