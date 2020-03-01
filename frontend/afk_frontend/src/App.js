@@ -1,12 +1,15 @@
-import React from 'react';
-import PostForm from "./PostForm";
+import React, { Component } from "react";
+import "./App.css";
+import NavBar from "./NavBar";
 
-function App() {
-  return (
-    <div className="App">
-      <PostForm />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+      </div>
+    );
+  }
 }
 
 export default App;
