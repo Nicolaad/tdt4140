@@ -38,11 +38,12 @@ class ThreadPost extends React.Component {
             <div className="field">
                 <form onSubmit = {this.submitHandler} id="threadPost">
                     <div>
-                        <h2>Tittel</h2>
+                        <h2>Opprett tråd</h2>
                         <input 
                         type="text" 
                         name="title" 
                         value = {title}
+                        placeholder = "Tittel"
                         onChange = {this.changeHandler}/>
                     </div>
                 </form>

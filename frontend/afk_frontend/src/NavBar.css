@@ -1,11 +1,12 @@
 .navBar {
+    color: #FDFFFF;
     display: table;
-    height:50px;
-    border: 2px solid #EFFBF1;
+    height: 10px;
+    border: 1px solid rgba(64, 78, 85, 0.815);
     border-top: none;
     border-left: none;
     border-right: none;
-    background-color: #F7FDF8;
+    background-color: #22333B;
     padding:5px;
     font-size: 10pt;
     left: 0px;
@@ -15,5 +16,6 @@
 }
 
 .login {
+    margin: 5px;
     margin-left: 82%;
 }

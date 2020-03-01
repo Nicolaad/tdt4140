@@ -1,0 +1,12 @@
+.threadCreateButton {
+    text-align: center;
+    margin: 10px;
+}
+
+.contentBody {
+    background-color: #162126;
+    text-align: center;
+    margin: auto;
+    width: 700px;
+    height: auto;
+}
