@@ -18,9 +18,10 @@ body {
 }
 
 .modal-button {
+  display: inline-block;
   color: #FDFFFF;
   padding: 10px;
-  font-size: 1.2em;
+  font-size: medium;
   font-weight: bold;
   background: #1E1D1B;
   border: 1px solid #FDFFFF(255, 255, 255);

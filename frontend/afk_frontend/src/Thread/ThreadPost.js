@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "../Body.css";
 
 class ThreadPost extends React.Component {
 
@@ -48,6 +49,8 @@ class ThreadPost extends React.Component {
                         <input 
                         type="text" 
                         name="title" 
+                        className="inputbox"
+                        id="threadtitle"
                         value = {title}
                         placeholder = "Tittel"
                         onChange = {this.changeHandler}/>
@@ -55,7 +58,8 @@ class ThreadPost extends React.Component {
                 </form>
                 <textarea
                     rows="12"
-                    cols="70"
+                    cols="64"
+                    className="inputbox"
                     name="postContent"
                     form="threadPost"
                     placeholder="Skriv her..."
@@ -63,7 +67,8 @@ class ThreadPost extends React.Component {
                     onChange= {this.changeHandler}>{text}
                 </textarea>
                 <button 
-                    className = "register-button" 
+                    className = "button1"
+                    id="postthreadbutton" 
                     type="submit" 
                     form="threadPost">
                     Publiser
