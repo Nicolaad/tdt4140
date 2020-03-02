@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "../Body.css";
 
 class PostForm extends React.Component {
 
@@ -36,34 +37,43 @@ class PostForm extends React.Component {
     render() {
         const { username, email, password } = this.state;
         return (
-            <div className="field">
+            <div className="registerDiv">
                 <h1>Registrer bruker</h1>
                 <form onSubmit = {this.submitHandler}>
                     <div>
-                        <h2>Brukernavn</h2>
+                        <label>Brukernavn</label>
+                        <br />
                         <input 
                         type="text" 
-                        name="username" 
+                        name="username"
+                        className="inputbox"
                         value = {username}
                         onChange = {this.changeHandler}/>
                     </div>
+                    <br />
                     <div>
-                        <h2>Email</h2>
+                        <label>Email</label>
+                        <br />
                         <input 
                         type="text" 
+                        className="inputbox"
                         name="email" 
                         value = {email}
                         onChange = {this.changeHandler}/>
                     </div>
+                    <br />
                     <div>
-                        <h2>Passord</h2>
+                        <label>Passord</label>
+                        <br />
                         <input 
-                        type="password" 
+                        type="password"
+                        className="inputbox"
                         name="password" 
                         value = {password}
                         onChange = {this.changeHandler}/>
                     </div>
-                    <button className = "register-button" type="submit">Submit</button>
+                    <br />
+                    <button className = "button1" type="submit">Registrer</button>
                 </form>
             </div>
         )

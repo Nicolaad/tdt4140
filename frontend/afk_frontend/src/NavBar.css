@@ -1,19 +1,19 @@
 .navBar {
+    color: #FDFFFF;
     display: table;
-    height:50px;
-    border: 2px solid #EFFBF1;
+    border: 1px solid rgba(64, 78, 85, 0.815);
     border-top: none;
     border-left: none;
     border-right: none;
-    background-color: #F7FDF8;
-    padding:5px;
+    background-color: #162126;
+    padding: 10px;
     font-size: 10pt;
     left: 0px;
     right: 0px;
-    float: none;
     width: 100%;
 }
 
 .login {
+    display: inline-block;
     margin-left: 82%;
 }

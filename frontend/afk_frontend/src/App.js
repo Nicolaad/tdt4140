@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./NavBar";
+import Body from "./Body";
 
 class App extends Component {
   constructor(props){
@@ -25,20 +26,22 @@ class App extends Component {
   }
   render() {
     return (
-
-
       <div className="App">
         {this.state.isAuthenticated ? 
-        <div>
-          <h1>Hei {this.state.username}</h1>
-          <NavBar isAuthenticated={true} authenticateFunction={()=> this.deAuthenticate()}></NavBar>
-        </div>
-        :
-        <div>
-        <h1>vennligst logg inn</h1>
-        <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}></NavBar>
-        </div>
-        }
+          <div>
+            <NavBar 
+            username={this.state.username} 
+            isAuthenticated={true} 
+            authenticateFunction={()=> this.deAuthenticate()}></NavBar>
+          </div>
+          :
+          <div>
+            <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}></NavBar>
+            
+          </div>
+          }
+          <Body isAuthenticated={this.state.isAuthenticated} />
+        
       </div>
     );
   }
