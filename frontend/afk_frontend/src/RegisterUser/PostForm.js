@@ -12,6 +12,7 @@ class PostForm extends React.Component {
             email: '',
             password: ''
         }
+        
     }
 
     changeHandler = (e) => {
@@ -20,7 +21,6 @@ class PostForm extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        console.log(this.state)
         axios
             .post('http://127.0.0.1:8000/users/', this.state)
             .then(response => {
@@ -35,7 +35,6 @@ class PostForm extends React.Component {
     }
 
     render() {
-        const { username, email, password } = this.state;
         return (
             <div className="registerDiv">
                 <h1>Registrer bruker</h1>
@@ -47,7 +46,6 @@ class PostForm extends React.Component {
                         type="text" 
                         name="username"
                         className="inputbox"
-                        value = {username}
                         onChange = {this.changeHandler}/>
                     </div>
                     <br />
@@ -58,7 +56,6 @@ class PostForm extends React.Component {
                         type="text" 
                         className="inputbox"
                         name="email" 
-                        value = {email}
                         onChange = {this.changeHandler}/>
                     </div>
                     <br />
@@ -69,11 +66,10 @@ class PostForm extends React.Component {
                         type="password"
                         className="inputbox"
                         name="password" 
-                        value = {password}
                         onChange = {this.changeHandler}/>
                     </div>
                     <br />
-                    <button className = "button1" type="submit">Registrer</button>
+                    <button className = "button1" type="button" onClick={this.submitHandler}> Registrer</button>
                 </form>
             </div>
         )
