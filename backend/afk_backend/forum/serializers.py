@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from afk_backend.forum.models import Thread
+from afk_backend.forum.models import Thread, Comment
 from django.contrib.auth.models import User, Group
 from rest_framework_jwt.settings import api_settings
 
@@ -47,4 +47,11 @@ class UserSerializerWithToken(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['url','token', 'username', 'password', 'email']
 
+class CommentSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True)
+    ownername = serializers.ReadOnlyField(source='owner.username')
+    thread = serializers.HyperlinkedRelatedField(many=False, view_name='thread-detail', read_only=True)
 
+    class Meta:
+        model = Comment
+        fields = '__all__'

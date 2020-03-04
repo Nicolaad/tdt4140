@@ -6,3 +6,10 @@ class Thread(models.Model):
     title = models.CharField(max_length=100)
     postContent = models.TextField()
     owner = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    dateCreated =  models.DateTimeField(default=timezone.now)
+    title = models.CharField(max_length=100)
+    postContent = models.TextField()
+    owner = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+    thread = models.ForeignKey('Thread', on_delete=models.CASCADE)

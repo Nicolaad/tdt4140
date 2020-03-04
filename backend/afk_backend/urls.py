@@ -26,6 +26,8 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'threads', views.ThreadViewSet)
+router.register(r'comments', views.CommentViewSet)
+
 
 
 # Wire up our API using automatic URL routing.
