@@ -12,15 +12,13 @@ class Body extends React.Component {
 
     async componentDidMount(){
         console.log('body mounted!')
-        let yourConfig = {
+        const token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
             Authorization: 'JWT '+ localStorage.getItem('token')
          }} 
 
         try {
-             const result = await axios.get('http://127.0.0.1:8000/threads/', yourConfig)
+             const result = await axios.get('http://127.0.0.1:8000/threads/', token)
              this.setState({ threads: [...result.data.results]})
              
         } catch(e){
