@@ -13,7 +13,41 @@
     width: 100%;
 }
 
+/*#logo {
+    height: 100px;
+    width: 100px;
+    float: left;
+    position: relative;
+    background-color: #162126;
+}*/
+
+#logo {
+    height: 55px;
+    width: 157px;
+    top: 11px;
+    left: 10px;
+    float: left;
+    position: relative;
+    background-color: #162126;
+}
+
 .login {
-    display: inline-block;
+    padding: 16px;
     margin-left: 82%;
 }
+
+/*display = inline-block, i login*/
+
+/* 
+Eventuelt
+Logo og tekst på samme linje:
+#logo {
+    height: 55px;
+    width: 157px;
+    top: 11px;
+    left: 10px;
+    float: left;
+    position: relative;
+    background-color: #162126;
+}
+*/
