@@ -28,8 +28,3 @@ class NavBar extends Component {
 }
  
 export default NavBar;
-
-/*Eventuelt
-Logo og navn på samme linje:
-<img id = "logo" src = "AFK-logo side.png"/>
-*/
