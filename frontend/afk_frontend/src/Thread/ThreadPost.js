@@ -31,6 +31,7 @@ class ThreadPost extends React.Component {
                 console.log(response)
                 if (response.status == 201) {
                     alert("Thread posted");
+                    this.props.updateThreads()
                 }
             })
             .catch(error => {

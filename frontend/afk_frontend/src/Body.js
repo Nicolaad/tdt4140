@@ -6,21 +6,22 @@ import "./Body.css";
 import Thread from "./Thread/Thread";
 
 class Body extends React.Component {
-    state = {
-        threads: []
+    constructor(props){
+        super(props)
+        this.state = {
+            threads: []
+        }
+        this.fetchThreads = this.fetchThreads.bind(this)
     }
-
     async componentDidMount(){
-        console.log('body mounted!')
-        let yourConfig = {
-            headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
-            Authorization: 'JWT '+ localStorage.getItem('token')
-         }} 
+        this.fetchThreads()
+    }
+    
+    async fetchThreads(){
+    
 
         try {
-             const result = await axios.get('http://127.0.0.1:8000/threads/', yourConfig)
+             const result = await axios.get('http://127.0.0.1:8000/threads/')
              this.setState({ threads: [...result.data.results]})
              
         } catch(e){
@@ -44,7 +45,7 @@ class Body extends React.Component {
                  <div className="threadCreateButton">
                  <Modal
                  modalProps={{triggerText: "Opprett tråd"}} 
-                 modalContent={<ThreadPost />} />
+                 modalContent={<ThreadPost updateThreads={this.fetchThreads}/>} />
              </div>
              :
              <div></div>
