@@ -26,12 +26,13 @@ export default class Login extends Component{
         axios
         .post(apiBaseUrl, this.state)
         .then(response => {
-            console.log(response)
             if (response.status == 200) {
+                document.querySelector('html').classList.toggle('scroll-lock');
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('username', response.data.user.username)
                 this.props.authenticateFunction()
                 alert("Du er logget inn");
+                
 
             }
         })

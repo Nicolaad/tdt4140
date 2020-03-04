@@ -36,7 +36,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 class ThreadViewSet(viewsets.ModelViewSet):
-    queryset = Thread.objects.all()
+    queryset = Thread.objects.all().order_by('-dateCreated')
     serializer_class = ThreadSerializer
     authentication_classes=(JSONWebTokenAuthentication,)
 
