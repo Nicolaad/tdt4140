@@ -13,6 +13,11 @@ class App extends Component {
     this.deAuthenticate = this.deAuthenticate.bind(this)
     this.authenticate = this.authenticate.bind(this)
   }
+  componentDidMount(){
+    if(localStorage.getItem('token') !== null){
+      this.authenticate()
+    }
+  }
 
   deAuthenticate(){
     this.setState({isAuthenticated: false, username: null, token: null},)
