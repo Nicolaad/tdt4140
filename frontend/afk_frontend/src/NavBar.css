@@ -13,7 +13,17 @@
     width: 100%;
 }
 
+#logo {
+    height: 55px;
+    width: 157px;
+    top: 11px;
+    left: 10px;
+    float: left;
+    position: relative;
+    background-color: #162126;
+}
+
 .login {
-    display: inline-block;
+    padding: 16px;
     margin-left: 82%;
 }
