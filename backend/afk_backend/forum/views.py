@@ -54,7 +54,6 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer 
     authentication_classes=(JSONWebTokenAuthentication,)
-    permission_classes=[permissions.IsAuthenticated]
 
     def get_permissions(self):
         """
@@ -62,8 +61,10 @@ class CommentViewSet(viewsets.ModelViewSet):
         """
         if self.action == 'list':
             permission_classes = [permissions.AllowAny]
-        else:
+        elif self.action == 'create':
             permission_classes = [permissions.IsAuthenticated]
+        else:
+            permission_classes = [permissions.IsAdminUser]
         return [permission() for permission in permission_classes]
 
     def list(self, request):
