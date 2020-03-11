@@ -26,7 +26,7 @@ class PostForm extends React.Component {
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
-                    alert("User Created");
+                    document.getElementsByClassName("_modal-close")[0].click();
                 }
             })
             .catch(error => {

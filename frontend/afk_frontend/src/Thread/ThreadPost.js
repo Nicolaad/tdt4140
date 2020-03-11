@@ -30,8 +30,11 @@ class ThreadPost extends React.Component {
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
+                    //close popupp by calling the the close modal button
+                    document.getElementsByClassName("_modal-close")[0].click()
                     alert("Thread posted");
                     this.props.updateThreads()
+                    
                 }
             })
             .catch(error => {

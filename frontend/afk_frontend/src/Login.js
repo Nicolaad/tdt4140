@@ -27,11 +27,11 @@ export default class Login extends Component{
         .post(apiBaseUrl, this.state)
         .then(response => {
             if (response.status == 200) {
-                document.querySelector('html').classList.toggle('scroll-lock');
-                localStorage.setItem('token', response.data.token)
-                localStorage.setItem('username', response.data.user.username)
-                this.props.authenticateFunction()
-                alert("Du er logget inn");
+                //close popupp by calling the the close modal button
+                document.getElementsByClassName("_modal-close")[0].click();
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('username', response.data.user.username);
+                this.props.authenticateFunction();
                 
 
             }
