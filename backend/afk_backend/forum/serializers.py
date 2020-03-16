@@ -9,7 +9,11 @@ class ThreadSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Thread
-        fields = '__all__'
+        fields = ['url','dateCreated', 'title', 'postContent', 'owner', 'upvotes', 'downvotes', 'ownername', 'usersVoted']
+        read_only_fields = ['dateCreated', 'upvotes', 'downvotes', 'ownername', 'usersVoted']
+
+class VoteSerializer(serializers.Serializer):
+    upvote = serializers.BooleanField()
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
