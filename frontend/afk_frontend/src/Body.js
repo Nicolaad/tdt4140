@@ -32,12 +32,20 @@ class Body extends React.Component {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
             threadList = this.state.threads.map((thread, i) => 
-            <Thread key={i}
+            <Modal key={i}
+            modalProps={{ triggerText: <Thread
                 ownername={thread.ownername}
                 title={thread.title}
                 dateCreated={thread.dateCreated}
                 postContent={thread.postContent}
-            />)
+            />}}
+            modalContent={<Thread
+                ownername={thread.ownername}
+                title={thread.title}
+                dateCreated={thread.dateCreated}
+                postContent={thread.postContent}/>}/>
+            )
+            
         }
         return (
             <div className="contentBody">
