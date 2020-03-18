@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import "./Modal.css"
 class ModalTrigger extends Component {
   render() {
+    //make element with isNotButton=true if you want a non button trigger.
+    //omitt isNotButton, or specify it false to keep it as normal
+    
     if (this.props.isNotButton){
     return (
       <div
