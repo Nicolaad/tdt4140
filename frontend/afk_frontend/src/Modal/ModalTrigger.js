@@ -11,6 +11,7 @@ class ModalTrigger extends Component {
         ref={this.props.buttonRef}
         onClick={this.props.showModal}
       >
+        {this.props.triggerText}
       </div>
     );
   }else{

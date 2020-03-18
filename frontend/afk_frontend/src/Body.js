@@ -27,7 +27,8 @@ class Body extends React.Component {
         } catch(e){
             console.log(e)
         }
-    }   
+    }
+    //todo: add comments and style into clickedThread div   
     render () {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
@@ -38,12 +39,14 @@ class Body extends React.Component {
                 title={thread.title}
                 dateCreated={thread.dateCreated}
                 postContent={thread.postContent}
-            />}}
-            modalContent={<Thread
+            />, isNotButton:true}}
+            modalContent={<div className="clickedThread"><Thread
                 ownername={thread.ownername}
                 title={thread.title}
                 dateCreated={thread.dateCreated}
-                postContent={thread.postContent}/>}/>
+                postContent={thread.postContent}/>
+                </div>}
+                />
             )
             
         }
