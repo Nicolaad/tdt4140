@@ -5,15 +5,9 @@ class Thread(models.Model):
     dateCreated =  models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=100)
     postContent = models.TextField()
-    owner = models.ForeignKey('auth.User',on_delete=models.CASCADE)
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
-    usersVoted = models.ManyToManyField("auth.User", related_name="votes")
+    owner = models.ForeignKey('auth.User',on_delete=models.CASCADE)        
 
-    def vote(self, user, upvote):
-        if(upvote):
-            self.upvotes = self.upvotes + 1
-        else:
-            self.downvotes = self.downvotes + 1
-        self.usersVoted.add(user)
-        self.save()
+class threadVote(models.Model):
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    upvote = models.BooleanField()

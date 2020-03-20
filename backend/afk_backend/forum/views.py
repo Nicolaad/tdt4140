@@ -4,7 +4,7 @@ from afk_backend.forum.serializers import UserSerializer, GroupSerializer, Threa
 from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from afk_backend.forum.models import Thread
+from afk_backend.forum.models import Thread, threadVote
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
@@ -56,10 +56,12 @@ class ThreadViewSet(viewsets.ModelViewSet):
         thread = self.get_object()
         user = request.user
 
-        if (user not in thread.usersVoted.all()): #checking if user has already voted
+        if (user not in User.objects.filter(threadvote__thread=thread.id)): #checking if user has already voted
             serializer = VoteSerializer(data=request.data)
             if serializer.is_valid():
-                thread.vote(user = self.request.user, upvote=serializer.data['upvote'])
+                tvote = threadVote(thread=thread, user=user, upvote=serializer.data['upvote'])
+                tvote.save()
+                #thread.vote(user = self.request.user, upvote=serializer.data['upvote'])
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
