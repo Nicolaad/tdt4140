@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ModalContent from './ModalContent';
 import ModalTrigger from './ModalTrigger';
+import Comment from '../Thread/Comment';
+import Thread from '../Thread/Thread';
+import CommentManager from '../Thread/CommentManager'
 export class Modal extends Component {
   constructor() {
     super();
@@ -33,6 +36,17 @@ export class Modal extends Component {
     document.querySelector('html').classList.toggle('scroll-lock');
   };
   render() {
+
+    //append new things to the modal content here
+    if(this.props.modalProps.isNotButton){
+      var modalContent = <div>{this.props.modalContent} 
+        <CommentManager id={this.props.modalProps.id} fetchComments={this.props.fetchExtra}/>
+        </div>
+      
+    }else{
+      var modalContent = this.props.modalContent;
+    }
+     
     return (
       <React.Fragment>
         <ModalTrigger
@@ -46,7 +60,7 @@ export class Modal extends Component {
             modalRef={n => (this.modal = n)}
             buttonRef={n => (this.closeButton = n)}
             closeModal={this.closeModal}
-            content={this.props.modalContent}
+            content={modalContent}
             onKeyDown={this.onKeyDown}
             onClickOutside={this.onClickOutside}
           />

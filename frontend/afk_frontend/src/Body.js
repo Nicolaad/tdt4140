@@ -12,14 +12,13 @@ class Body extends React.Component {
             threads: []
         }
         this.fetchThreads = this.fetchThreads.bind(this)
+        this.fetchComments = this.fetchComments.bind(this)
     }
     async componentDidMount(){
         this.fetchThreads()
     }
     
     async fetchThreads(){
-    
-
         try {
              const result = await axios.get('http://127.0.0.1:8000/threads/')
              this.setState({ threads: [...result.data.results]})
@@ -28,18 +27,30 @@ class Body extends React.Component {
             console.log(e)
         }
     }
+    async fetchComments(){
+        try {
+            let index =1;
+            const result = await axios.get('http://127.0.0.1:8000/comments?thread='+index)
+            return ([...result.data])
+            
+       } catch(e){
+           console.log(e)
+       }
+
+    }
     //todo: add comments and style into clickedThread div   
     render () {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
-            threadList = this.state.threads.map((thread, i) => 
-            <Modal key={i}
+            threadList = this.state.threads.map((thread, id) => 
+            
+            <Modal key = {thread.url.match(/([^\/]*)\/*$/)[1]}
             modalProps={{ triggerText: <Thread
                 ownername={thread.ownername}
                 title={thread.title}
                 dateCreated={thread.dateCreated}
                 postContent={thread.postContent}
-            />, isNotButton:true}}
+            />, isNotButton:true, id:thread.url.match(/([^\/]*)\/*$/)[1]}}
             modalContent={<div className="clickedThread"><Thread
                 ownername={thread.ownername}
                 title={thread.title}

@@ -23,9 +23,15 @@ class ThreadPost extends React.Component {
             headers: {
 
             Authorization: 'JWT '+ localStorage.getItem('token')
-         }} 
+         }}
+         //swapp out this.state below with testComment to make a test comment
+         let testComment= {
+            title: "første kommentar",
+            postContent: "her er den 2 kommentarteksten",
+            thread: "2"
+         } 
         axios
-            .post('http://127.0.0.1:8000/threads/', this.state, token)
+            .post('http://127.0.0.1:8000/comments/', this.state, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
