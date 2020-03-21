@@ -31,7 +31,7 @@ class ThreadPost extends React.Component {
             thread: "2"
          } 
         axios
-            .post('http://127.0.0.1:8000/comments/', this.state, token)
+            .post('http://127.0.0.1:8000/comments/', testComment, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
