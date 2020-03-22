@@ -7,7 +7,6 @@ class CommentManager extends React.Component {
         super(props)
         this.state = {
             comments: null,
-            title:"",
             postContent:""
         }
     }
@@ -33,17 +32,19 @@ class CommentManager extends React.Component {
             headers: {
             Authorization: 'JWT '+ localStorage.getItem('token')
          }}
-         let testComment= {
-            title: "første kommentar",
+         let commentData= {
+             title: "placeholder", 
             postContent: this.state.postContent,
             thread: this.props.id
          } 
         axios
-            .post('http://127.0.0.1:8000/comments/',testComment, token)
+            .post('http://127.0.0.1:8000/comments/',commentData, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
                     this.fetchComments()
+                    this.setState({postContent:""})
+                    document.getElementById("postComment").value=""
                 }
             })
             .catch(error => {
@@ -55,9 +56,8 @@ class CommentManager extends React.Component {
     }
 
     render () {
-        let commentList = <p>Ingen komentarer</p>
+        let commentList = <p>Her er det ingen episke kommentarer :(</p>
         if (this.state.comments){
-            console.log(this.state.comments)
             commentList = this.state.comments.map((comment) => 
             <Comment key={comment.url.match(/([^\/]*)\/*$/)[1]} username={comment.ownername} date={comment.dateCreated} postContent={comment.postContent}></Comment>
             )
@@ -74,7 +74,7 @@ class CommentManager extends React.Component {
                         name="postContent"
                         form="commentPost"
                         placeholder="Skriv en kommentar her"
-                        id = "postContent"
+                        id = "postComment"
                         onChange= {this.changeHandler}>
                     </textarea>
                     <button 
