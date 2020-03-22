@@ -39,7 +39,6 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-                
                  <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
                  <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
                 {props.isAuthenticated ? 
