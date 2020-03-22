@@ -51,20 +51,25 @@ class ThreadViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # For up/Downvotes
-    @action(detail=True, methods=['put'], permission_classes=[permissions.IsAuthenticated])
+    @action(detail=True, methods=['put','delete'], permission_classes=[permissions.IsAuthenticated])
     def vote(self, request, pk=None):
         thread = self.get_object()
         user = request.user
 
-        if (user not in User.objects.filter(threadvote__thread=thread.id)): #checking if user has already voted
-            serializer = VoteSerializer(data=request.data)
-            if serializer.is_valid():
-                tvote = threadVote(thread=thread, user=user, upvote=serializer.data['upvote'])
-                tvote.save()
-                #thread.vote(user = self.request.user, upvote=serializer.data['upvote'])
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-        
-
+        if(request.method=='PUT'):
+            if (user not in User.objects.filter(threadvote__thread=thread.id)): #checking if user has already voted
+                serializer = VoteSerializer(data=request.data)
+                if serializer.is_valid():
+                    tvote = threadVote(thread=thread, user=user, upvote=serializer.data['upvote'])
+                    tvote.save()
+                    return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+        elif request.method == 'DELETE':
+            tvote = threadVote.objects.filter(user=user, thread=thread)
+            if (tvote):
+                tvote.delete()
+                return Response(status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
