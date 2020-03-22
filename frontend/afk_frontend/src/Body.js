@@ -33,6 +33,8 @@ class Body extends React.Component {
         if (this.state.threads){
             threadList = this.state.threads.map((thread, i) => 
             <Thread key={i}
+                currentUserVote={thread.current_user_vote}
+                isAuthenticated={this.props.isAuthenticated}
                 threadID={thread.id}
                 downvoteCount={thread.downvotes}
                 upvoteCount={thread.upvotes}

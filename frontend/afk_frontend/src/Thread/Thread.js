@@ -8,6 +8,11 @@ const axios = require("axios");
 
 function Thread(props) {
 
+    let deleteThread = (threadID) => {
+        axios
+            .delete("http://127.0.0.1:8000/threads/" + threadID)
+    }
+
     let postVote = (threadID, boolean) => {
         let yourConfig = {
             headers: {
@@ -34,8 +39,13 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-        <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
-        <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
+                
+                 <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
+                 <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
+                {props.isAuthenticated ? 
+                <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
+                <p></p>
+                }
             </div>
         )
     }
