@@ -42,7 +42,9 @@ class App extends Component {
             
           </div>
           }
-          <Body isAuthenticated={this.state.isAuthenticated} />
+          <Body 
+          username={this.state.username}
+          isAuthenticated={this.state.isAuthenticated} />
         
       </div>
     );
