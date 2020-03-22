@@ -42,23 +42,37 @@ class Body extends React.Component {
     render () {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
+
             threadList = this.state.threads.map((thread) => 
             //note the duplicate <Thread/>, first one representing the clicable text -
             // the second represents the displayed text when clicked
-            <Modal key = {thread.url.match(/([^\/]*)\/*$/)[1]}
-            modalProps={{ triggerText: <div><Thread
-                ownername={thread.ownername}
-                title={thread.title}
-                dateCreated={thread.dateCreated}
-                postContent={thread.postContent}
-            ></Thread></div>, isNotButton:true, id:thread.url.match(/([^\/]*)\/*$/)[1], isAuthenticated:this.props.isAuthenticated}}
-            modalContent={<div className="clickedThread"><Thread
-                ownername={thread.ownername}
-                title={thread.title}
-                dateCreated={thread.dateCreated}
-                postContent={thread.postContent}/>
-                </div>}
+            <div key={thread.id}>
+                <Modal 
+                modalProps={{ triggerText: 
+                    <div>
+                        <Thread
+                            threadID={thread.id}
+                            downvoteCount={thread.downvotes}
+                            upvoteCount={thread.upvotes}
+                            ownername={thread.ownername}
+                            title={thread.title}
+                            dateCreated={thread.dateCreated}
+                            postContent={thread.postContent}
+                        />
+                    </div>
+                    ,isNotButton:true, id:thread.id, isAuthenticated:this.props.isAuthenticated}}
+                        modalContent={
+                            <div className="clickedThread">
+                                <Thread threadID={thread.id}
+                                    downvoteCount={thread.downvotes}
+                                    upvoteCount={thread.upvotes}
+                                    ownername={thread.ownername}
+                                    title={thread.title}
+                                    dateCreated={thread.dateCreated}
+                                    postContent={thread.postContent}/>
+                            </div>}
                 />
+            </div>
             )
             
         }

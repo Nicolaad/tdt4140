@@ -12,7 +12,7 @@ class ThreadSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Thread
-        fields = ['id','url','dateCreated', 'title', 'postContent', 'owner', 'ownername', 'upvotes', 'downvotes','current_user_vote']
+        fields = ['id', 'url','dateCreated', 'title', 'postContent', 'owner', 'ownername', 'upvotes', 'downvotes','current_user_vote']
         read_only_fields = ['dateCreated', 'ownername']
 
     def get_upvotes(self, obj):
