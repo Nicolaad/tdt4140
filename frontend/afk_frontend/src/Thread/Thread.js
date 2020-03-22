@@ -43,8 +43,8 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-                <button onClick={(ev) => postVote(props.threadID, "False", ev)}>Downvote:{props.downvoteCount}</button>
-                <button onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
+                <button className="button1" onClick={(ev) => postVote(props.threadID, "False", ev)}>Downvote:{props.downvoteCount}</button>
+                <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
             </div>
         )
     }
