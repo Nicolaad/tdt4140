@@ -40,7 +40,7 @@ export class Modal extends Component {
     //append new things to the modal content here
     if(this.props.modalProps.isNotButton){
       modalContent= <div>{this.props.modalContent} 
-        <CommentManager id={this.props.modalProps.id} fetchComments={this.props.fetchExtra}/>
+        <CommentManager id={this.props.modalProps.id} isAuthenticated = {this.props.modalProps.isAuthenticated}/>
         </div>
       
     }else{

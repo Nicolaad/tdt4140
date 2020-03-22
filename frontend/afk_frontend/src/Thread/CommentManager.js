@@ -61,36 +61,42 @@ class CommentManager extends React.Component {
             commentList = this.state.comments.map((comment) => 
             <Comment key={comment.url.match(/([^\/]*)\/*$/)[1]} username={comment.ownername} date={comment.dateCreated} postContent={comment.postContent}></Comment>
             )
-        }else{
-            
         }
+        let commentInput = ""
+        if (this.props.isAuthenticated){
+            commentInput= <div className="field">
+                    <form onSubmit = {this.submitHandler} id="commentPost">
+                    </form>
+                    <textarea
+                        rows="12"
+                        cols="64"
+                        className="inputbox"
+                        name="postContent"
+                        form="commentPost"
+                        placeholder="Skriv en kommentar her"
+                        id = "postContent"
+                        onChange= {this.changeHandler}>
+                    </textarea>
+                    <button 
+                        className = "button1"
+                        id="postCommentButton" 
+                        type="submit" 
+                        form="commentPost">
+                        Publiser
+                    </button>
+                </div>
+                }
+
+        
         return (
             <div>
                 <div>
                 {commentList}
                 </div>
-                <div className="field">
-                <form onSubmit = {this.submitHandler} id="commentPost">
-                </form>
-                <textarea
-                    rows="12"
-                    cols="64"
-                    className="inputbox"
-                    name="postContent"
-                    form="commentPost"
-                    placeholder="Skriv en kommentar her"
-                    id = "postContent"
-                    onChange= {this.changeHandler}>
-                </textarea>
-                <button 
-                    className = "button1"
-                    id="postCommentButton" 
-                    type="submit" 
-                    form="commentPost">
-                    Publiser
-                </button>
+                {commentInput}
+            
             </div>
-            </div>
+                
         )
     }
 }
