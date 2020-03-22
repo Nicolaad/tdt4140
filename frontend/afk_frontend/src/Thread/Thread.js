@@ -11,6 +11,13 @@ function Thread(props) {
     let deleteThread = (threadID) => {
         axios
             .delete("http://127.0.0.1:8000/threads/" + threadID)
+            .then(response => {
+                console.log(response)
+                if (response.status == 204) {
+                    alert("Thread deleted");
+                    props.updateThreads()
+                }
+            })
     }
 
     let postVote = (threadID, boolean) => {
@@ -41,7 +48,7 @@ function Thread(props) {
                 </p>
                  <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
                  <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
-                {props.isAuthenticated ? 
+                {props.username == props.ownername ? 
                 <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
                 <p></p>
                 }
