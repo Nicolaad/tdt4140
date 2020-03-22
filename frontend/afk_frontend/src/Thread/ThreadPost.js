@@ -19,19 +19,20 @@ class ThreadPost extends React.Component {
     submitHandler = (e) => {
         e.preventDefault()
         console.log(this.state)
-        let yourConfig = {
+        let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
+
             Authorization: 'JWT '+ localStorage.getItem('token')
-         }} 
+         }}
         axios
-            .post('http://127.0.0.1:8000/threads/', this.state, yourConfig)
+            .post('http://127.0.0.1:8000/threads/', this.state, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
-                    alert("Thread posted");
+                    //close pop-up by calling the the close modal button
+                    document.getElementsByClassName("_modal-close")[0].click()
                     this.props.updateThreads()
+                    
                 }
             })
             .catch(error => {

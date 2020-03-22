@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from afk_backend.forum.serializers import UserSerializer, GroupSerializer, ThreadSerializer, UserSerializerWithToken, VoteSerializer
+from afk_backend.forum.serializers import UserSerializer, GroupSerializer, ThreadSerializer, UserSerializerWithToken, VoteSerializer, CommentSerializer
 from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from afk_backend.forum.models import Thread, threadVote
+from afk_backend.forum.models import Thread, Comment, threadVote
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
@@ -73,3 +73,52 @@ class ThreadViewSet(viewsets.ModelViewSet):
                 return Response(status=status.HTTP_200_OK)
             else:
                 return Response(status=status.HTTP_404_NOT_FOUND)
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer 
+    authentication_classes=(JSONWebTokenAuthentication,)
+
+    def get_permissions(self):
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action == 'list':
+            permission_classes = [permissions.AllowAny]
+        elif self.action == 'create':
+            permission_classes = [permissions.IsAuthenticated]
+        else:
+            permission_classes = [permissions.IsAdminUser]
+        return [permission() for permission in permission_classes]
+
+    def list(self, request):
+        serializer_context = {
+            'request': request,
+        }
+
+        queryset = Comment.objects.all()
+        thread = self.request.query_params.get('thread', None)
+        if thread is not None:
+            queryset = queryset.filter(thread__pk = thread)
+            if len(queryset) < 1:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = CommentSerializer(queryset, many=True, context = serializer_context)
+        try:
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        except:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def create(self, request):
+        serializer_context = {
+            'request': request,
+        }
+        serializer = CommentSerializer(data=request.data,context=serializer_context)
+        if serializer.is_valid():
+            try:
+                thread = Thread.objects.get(pk=request.data["thread"])
+            except:
+                return Response(serializer.data,status=status.HTTP_404_NOT_FOUND)
+            serializer.save(owner=self.request.user, thread=thread)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
