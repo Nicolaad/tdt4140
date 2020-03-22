@@ -42,15 +42,16 @@ class Body extends React.Component {
     render () {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
-            threadList = this.state.threads.map((thread, id) => 
-            
+            threadList = this.state.threads.map((thread) => 
+            //note the duplicate <Thread/>, first one representing the clicable text -
+            // the second represents the displayed text when clicked
             <Modal key = {thread.url.match(/([^\/]*)\/*$/)[1]}
-            modalProps={{ triggerText: <Thread
+            modalProps={{ triggerText: <div><Thread
                 ownername={thread.ownername}
                 title={thread.title}
                 dateCreated={thread.dateCreated}
                 postContent={thread.postContent}
-            />, isNotButton:true, id:thread.url.match(/([^\/]*)\/*$/)[1], isAuthenticated:this.props.isAuthenticated}}
+            ></Thread><button onClick={console.log("klikka")}>Klikk meg!</button></div>, isNotButton:true, id:thread.url.match(/([^\/]*)\/*$/)[1], isAuthenticated:this.props.isAuthenticated}}
             modalContent={<div className="clickedThread"><Thread
                 ownername={thread.ownername}
                 title={thread.title}
