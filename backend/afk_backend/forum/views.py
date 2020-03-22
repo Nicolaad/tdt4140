@@ -4,7 +4,7 @@ from afk_backend.forum.serializers import UserSerializer, GroupSerializer, Threa
 from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from afk_backend.forum.models import Thread, Comment
+from afk_backend.forum.models import Thread, Comment, threadVote
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
