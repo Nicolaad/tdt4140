@@ -51,7 +51,7 @@ class Body extends React.Component {
                 title={thread.title}
                 dateCreated={thread.dateCreated}
                 postContent={thread.postContent}
-            ></Thread><button onClick={console.log("klikka")}>Klikk meg!</button></div>, isNotButton:true, id:thread.url.match(/([^\/]*)\/*$/)[1], isAuthenticated:this.props.isAuthenticated}}
+            ></Thread></div>, isNotButton:true, id:thread.url.match(/([^\/]*)\/*$/)[1], isAuthenticated:this.props.isAuthenticated}}
             modalContent={<div className="clickedThread"><Thread
                 ownername={thread.ownername}
                 title={thread.title}
