@@ -24,8 +24,12 @@ class ThreadSerializer(serializers.HyperlinkedModelSerializer):
     def get_current_user_vote(self, obj):
         user = None
         request = self.context.get("request")
+        
         if request and hasattr(request, "user"):
             user = request.user
+
+        if user.is_anonymous:
+            return -1
 
         vote = threadVote.objects.filter(thread=obj, user=user)
         if not vote:
