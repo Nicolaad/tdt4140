@@ -20,8 +20,24 @@ function Thread(props) {
             })
     }
 
+    let postEdit = (threadID) => {
+        let token = {
+            headers: {
+            //Follow the format:  Authorization: 'JWT token
+            //eg :
+            Authorization: 'JWT '+ localStorage.getItem('token')
+         }}
+         axios
+            .put(
+                "http://127.0.0.1:8000/threads/" + threadID,  
+                
+            )
+            .then(r => console.log(r.status))
+            .catch(e => console.log(e));
+    }
+
     let postVote = (threadID, boolean) => {
-        let yourConfig = {
+        let token = {
             headers: {
             //Follow the format:  Authorization: 'JWT token
             //eg :
@@ -31,7 +47,7 @@ function Thread(props) {
             .put(
                 "http://127.0.0.1:8000/threads/" + threadID + "/vote/", 
                 {'upvote': boolean},
-                yourConfig 
+                token 
                 
             )
             .then(r => console.log(r.status))
@@ -46,8 +62,8 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-                 <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
-                 <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
+                <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
+                <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
                 {props.username == props.ownername ? 
                 <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
                 <p></p>
