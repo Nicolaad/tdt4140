@@ -9,7 +9,9 @@ function Comment(props){
             <p>{props.username}</p>
             <p>{date.getDate() + "/" + date.getMonth() + "/"+ date.getFullYear()+ ", " + date.getHours() +":"+ date.getMinutes()}</p>
             </div>
+            <div className="commentContent">
             <p>{props.postContent}</p>
+            </div>
         </div>
     )
 }
