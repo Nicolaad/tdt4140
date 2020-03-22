@@ -78,7 +78,7 @@ class CommentManager extends React.Component {
                     className="inputbox"
                     name="postContent"
                     form="commentPost"
-                    placeholder="Skriv her..."
+                    placeholder="Skriv en kommentar her"
                     id = "postContent"
                     onChange= {this.changeHandler}>
                 </textarea>
