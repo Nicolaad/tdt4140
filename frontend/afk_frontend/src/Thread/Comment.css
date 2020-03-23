@@ -3,7 +3,7 @@
     border-color:gray;
     border-width: 1px;
     margin-bottom: 5px;
-    
+    word-wrap: break-word;
 }
 .commentMetaData{
     display:flex;

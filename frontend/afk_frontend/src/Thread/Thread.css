@@ -6,6 +6,7 @@
     background-color: #162126;
     color: #FDFFFF;
     text-align: center;
+    word-wrap: break-word;
 }
 
 .threadBody:hover {

@@ -52,7 +52,7 @@ class ThreadPost extends React.Component {
                         type="text" 
                         name="title" 
                         className="inputbox"
-                        id="threadtitle"
+                        id="threadPostTitle"
                         value = {title}
                         placeholder = "Tittel"
                         onChange = {this.changeHandler}/>
@@ -65,7 +65,7 @@ class ThreadPost extends React.Component {
                     name="postContent"
                     form="threadPost"
                     placeholder="Skriv her..."
-                    id = "postContent"
+                    id = "threadPostContent"
                     onChange= {this.changeHandler}>{text}
                 </textarea>
                 <button 

@@ -80,22 +80,13 @@ body {
 }
 @media screen and (min-width: 500px) {
   /* Center the Modal! */
-  .modal-area {
+  .modal-area, .modal-area-big {
     background-color: #162126;
     left: 50%;
     top: 50%;
     height: auto;
     transform: translate(-50%, -50%);
     max-width: 30em;
-    max-height: calc(100% - 1em);
-  }
-  .modal-area-big{
-    background-color: #162126;
-    left: 50%;
-    top: 50%;
-    height: auto;
-    transform: translate(-50%, -50%);
-    max-width: 60em;
     max-height: calc(100% - 1em);
   }
 }

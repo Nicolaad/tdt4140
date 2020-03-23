@@ -68,7 +68,6 @@ class CommentManager extends React.Component {
                     <form onSubmit = {this.submitHandler} id="commentPost">
                     </form>
                     <textarea
-                        
                         className="commentInputBox"
                         name="postContent"
                         form="commentPost"
