@@ -75,6 +75,6 @@ class ThreadViewSet(viewsets.ModelViewSet):
             tvote = threadVote.objects.filter(user=user, thread=thread)
             if (tvote):
                 tvote.delete()
-                return Response(status=status.HTTP_200_OK)
+                return Response(status=status.HTTP_204_NO_CONTENT)
             else:
                 return Response(status=status.HTTP_404_NOT_FOUND)

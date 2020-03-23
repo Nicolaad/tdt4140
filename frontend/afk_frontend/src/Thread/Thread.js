@@ -51,6 +51,7 @@ function Thread(props) {
         }
 
     }
+
         return (
             <div className="threadBody">
 
@@ -60,8 +61,12 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-                 <button onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button>
-                 <button onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button>
+                {props.currentUserVote === 2 ? <button className="buttonVoted" onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button> :
+                    <button className="button1" onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button>
+                }
+                {props.currentUserVote === 1 ? <button className="buttonVoted" onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button> :
+                    <button className="button1" onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button>
+                }
                 {props.username == props.ownername ? 
                 <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
                 <p></p>
