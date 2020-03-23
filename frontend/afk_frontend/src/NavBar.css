@@ -13,6 +13,10 @@
     width: 100%;
 }
 
+.navBar:hover {
+    border-color: #B967FF;
+}
+
 #logo {
     height: 55px;
     width: 157px;

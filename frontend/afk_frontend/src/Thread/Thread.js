@@ -5,9 +5,54 @@ import Modal from "../Modal/Modal";
 import axios from "axios";
 
 
+<<<<<<< HEAD
 function Thread(props) {  
     
     return (
+=======
+const axios = require("axios");
+
+
+
+function Thread(props) {
+
+    let deleteThread = (threadID) => {
+        let token = {
+            headers: {
+            //Follow the format:  Authorization: 'JWT token
+            //eg :
+            Authorization: 'JWT '+ localStorage.getItem('token')
+         }}
+        axios
+            .delete("http://127.0.0.1:8000/threads/" + threadID, token)
+            .then(response => {
+                console.log(response)
+                if (response.status == 204) {
+                    alert("Thread deleted");
+                    props.updateThreads()
+                }
+            })
+    }
+
+    let postVote = (threadID, boolean) => {
+        let yourConfig = {
+            headers: {
+            //Follow the format:  Authorization: 'JWT token
+            //eg :
+            Authorization: 'JWT '+ localStorage.getItem('token')
+         }}
+        axios
+            .put(
+                "http://127.0.0.1:8000/threads/" + threadID + "/vote/", 
+                {'upvote': boolean},
+                yourConfig 
+                
+            )
+            .then(r => console.log(r.status))
+            .catch(e => console.log(e));
+        }
+        return (
+>>>>>>> a93bed7d050f1dec4778d51beaf53706efb082ab
             <div className="threadBody">
 
                 <h2>{props.ownername}</h2>
@@ -16,11 +61,20 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
+<<<<<<< HEAD
                 <div className = "editbutton">
                     <Modal
                     modalProps={{triggerText: "Rediger"}} 
                     modalContent={<EditPost />} />
                 </div>
+=======
+                 <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
+                 <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
+                {props.username == props.ownername ? 
+                <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
+                <p></p>
+                }
+>>>>>>> a93bed7d050f1dec4778d51beaf53706efb082ab
             </div>
         )
     }
