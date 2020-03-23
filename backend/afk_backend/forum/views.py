@@ -59,15 +59,18 @@ class ThreadViewSet(viewsets.ModelViewSet):
         user = request.user
 
         if(request.method=='PUT'):
-            if (user not in User.objects.filter(threadvote__thread=thread.id)): #checking if user has already voted
-                serializer = VoteSerializer(data=request.data)
-                if serializer.is_valid():
-                    tvote = threadVote(thread=thread, user=user, upvote=serializer.data['upvote'])
-                    tvote.save()
-                    return Response(serializer.data, status=status.HTTP_200_OK)
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            else:
-                return Response(status=status.HTTP_403_FORBIDDEN)
+            if (user in User.objects.filter(threadvote__thread=thread.id)): #checking if user has already voted
+                tvote = threadVote.objects.filter(user=user, thread=thread)
+                if (tvote):
+                    tvote.delete()
+                
+            serializer = VoteSerializer(data=request.data)
+            if serializer.is_valid():
+                tvote = threadVote(thread=thread, user=user, upvote=serializer.data['upvote'])
+                tvote.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
         elif request.method == 'DELETE':
             tvote = threadVote.objects.filter(user=user, thread=thread)
             if (tvote):

@@ -18,15 +18,31 @@ class Body extends React.Component {
         this.fetchThreads()
     }
     
-    async fetchThreads(){
-    
-
-        try {
-             const result = await axios.get('http://127.0.0.1:8000/threads/')
-             this.setState({ threads: [...result.data.results]})
+    async fetchThreads() {
+        if (this.props.isAuthenticated) {
+            let token = {
+                headers: {
+                Authorization: 'JWT '+ localStorage.getItem('token')
+                }
+            }
+            
+            try {
+                const result = await axios.get('http://127.0.0.1:8000/threads/',token)
+                this.setState({ threads: [...result.data.results] })
              
-        } catch(e){
-            console.log(e)
+            } catch (e) {
+                console.log(e)
+            }
+            
+        } else {
+
+            try {
+                const result = await axios.get('http://127.0.0.1:8000/threads/')
+                this.setState({ threads: [...result.data.results] })
+             
+            } catch (e) {
+                console.log(e)
+            }
         }
     }   
     render () {

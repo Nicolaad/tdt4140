@@ -1,16 +1,16 @@
 import React from "react";
 import "./Thread.css";
-import EditPost from "../EditPost";
-import Modal from "../Modal/Modal";
-import axios from "axios";
+
+
+const axios = require("axios");
+
+
 
 function Thread(props) {
 
     let deleteThread = (threadID) => {
         let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
             Authorization: 'JWT '+ localStorage.getItem('token')
          }}
         axios
@@ -25,22 +25,32 @@ function Thread(props) {
     }
 
     let postVote = (threadID, boolean) => {
-        let yourConfig = {
+        let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
-            Authorization: 'JWT '+ localStorage.getItem('token')
-         }}
-        axios
-            .put(
-                "http://127.0.0.1:8000/threads/" + threadID + "/vote/", 
-                {'upvote': boolean},
-                yourConfig 
-                
-            )
-            .then(r => console.log(r.status))
-            .catch(e => console.log(e));
+                Authorization: 'JWT ' + localStorage.getItem('token')
+            }
         }
+        let uservote = (boolean ? 1 : 2);
+        if (props.currentUserVote === uservote) {
+            axios
+                .delete(
+                    "http://127.0.0.1:8000/threads/" + threadID + "/vote/",
+                    token
+                )
+                .then(r => console.log(r.status))
+                .catch(e => console.log(e));
+        } else {
+            axios
+                .put(
+                    "http://127.0.0.1:8000/threads/" + threadID + "/vote/",
+                    { 'upvote': boolean },
+                    token
+                )
+                .then(r => console.log(r.status))
+                .catch(e => console.log(e));
+        }
+
+    }
         return (
             <div className="threadBody">
 
@@ -50,13 +60,8 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-                <div className = "editbutton">
-                    <Modal
-                    modalProps={{triggerText: "Rediger"}} 
-                    modalContent={<EditPost />} />
-                </div>
-                 <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
-                 <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
+                 <button onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button>
+                 <button onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button>
                 {props.username == props.ownername ? 
                 <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
                 <p></p>
