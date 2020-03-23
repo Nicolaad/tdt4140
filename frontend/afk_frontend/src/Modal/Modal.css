@@ -64,10 +64,23 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-
+.modal-area-big {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  border-radius: 20px;
+  border: 1px solid #FDFFFF;
+  background-color: #162126;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 @media screen and (min-width: 500px) {
   /* Center the Modal! */
-  .modal-area {
+  .modal-area, .modal-area-big {
     background-color: #162126;
     left: 50%;
     top: 50%;

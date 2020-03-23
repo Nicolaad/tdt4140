@@ -19,20 +19,18 @@ class ThreadPost extends React.Component {
     submitHandler = (e) => {
         e.preventDefault()
         console.log(this.state)
-        let yourConfig = {
+        let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
+
             Authorization: 'JWT '+ localStorage.getItem('token')
-         }} 
+         }}
         axios
-            .post('http://127.0.0.1:8000/threads/', this.state, yourConfig)
+            .post('http://127.0.0.1:8000/threads/', this.state, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {
-                    //close popupp by calling the the close modal button
+                    //close pop-up by calling the the close modal button
                     document.getElementsByClassName("_modal-close")[0].click()
-                    alert("Thread posted");
                     this.props.updateThreads()
                     
                 }
@@ -54,7 +52,7 @@ class ThreadPost extends React.Component {
                         type="text" 
                         name="title" 
                         className="inputbox"
-                        id="threadtitle"
+                        id="threadPostTitle"
                         value = {title}
                         placeholder = "Tittel"
                         onChange = {this.changeHandler}/>
@@ -67,7 +65,7 @@ class ThreadPost extends React.Component {
                     name="postContent"
                     form="threadPost"
                     placeholder="Skriv her..."
-                    id = "postContent"
+                    id = "threadPostContent"
                     onChange= {this.changeHandler}>{text}
                 </textarea>
                 <button 

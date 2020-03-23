@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ModalContent from './ModalContent';
 import ModalTrigger from './ModalTrigger';
+
+import CommentManager from '../Thread/CommentManager'
 export class Modal extends Component {
   constructor() {
     super();
@@ -33,21 +35,36 @@ export class Modal extends Component {
     document.querySelector('html').classList.toggle('scroll-lock');
   };
   render() {
+
+    var modalContent;
+    var bigView = false
+    //append new things to the modal content here
+    if(this.props.modalProps.isFullThread){
+      modalContent= <div>{this.props.modalContent} 
+        <CommentManager id={this.props.modalProps.id} isAuthenticated = {this.props.modalProps.isAuthenticated}/>
+        </div>
+      bigView = true;
+    }else{
+      modalContent = this.props.modalContent;
+    }
+     
     return (
       <React.Fragment>
         <ModalTrigger
           showModal={this.showModal}
           buttonRef={n => (this.TriggerButton = n)}
           triggerText={this.props.modalProps.triggerText}
+          isFullThread={this.props.modalProps.isFullThread}
         />
         {this.state.isShown ? (
           <ModalContent
             modalRef={n => (this.modal = n)}
             buttonRef={n => (this.closeButton = n)}
             closeModal={this.closeModal}
-            content={this.props.modalContent}
+            content={modalContent}
             onKeyDown={this.onKeyDown}
             onClickOutside={this.onClickOutside}
+            bigView={bigView}
           />
         ) : (
           <React.Fragment />

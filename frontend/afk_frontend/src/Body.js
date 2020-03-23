@@ -18,8 +18,6 @@ class Body extends React.Component {
     }
     
     async fetchThreads(){
-    
-
         try {
              const result = await axios.get('http://127.0.0.1:8000/threads/')
              this.setState({ threads: [...result.data.results]})
@@ -27,17 +25,45 @@ class Body extends React.Component {
         } catch(e){
             console.log(e)
         }
-    }   
+    }
+    
+    //todo: add comments and style into clickedThread div   
     render () {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
-            threadList = this.state.threads.map((thread, i) => 
-            <Thread key={i}
-                ownername={thread.ownername}
-                title={thread.title}
-                dateCreated={thread.dateCreated}
-                postContent={thread.postContent}
-            />)
+
+            threadList = this.state.threads.map((thread) => 
+            //note the duplicate <Thread/>, first one representing the clicable text -
+            // the second represents the displayed text when clicked
+            <div key={thread.id}>
+                <Modal 
+                modalProps={{ triggerText: 
+                    <div>
+                        <Thread
+                            threadID={thread.id}
+                            downvoteCount={thread.downvotes}
+                            upvoteCount={thread.upvotes}
+                            ownername={thread.ownername}
+                            title={thread.title}
+                            dateCreated={thread.dateCreated}
+                            postContent={thread.postContent}
+                        />
+                    </div>
+                    ,isFullThread:true, id:thread.id, isAuthenticated:this.props.isAuthenticated}}
+                        modalContent={
+                            <div className="clickedThread">
+                                <Thread threadID={thread.id}
+                                    downvoteCount={thread.downvotes}
+                                    upvoteCount={thread.upvotes}
+                                    ownername={thread.ownername}
+                                    title={thread.title}
+                                    dateCreated={thread.dateCreated}
+                                    postContent={thread.postContent}/>
+                            </div>}
+                />
+            </div>
+            )
+            
         }
         return (
             <div className="contentBody">
