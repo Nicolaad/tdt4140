@@ -66,7 +66,7 @@ class ThreadPost extends React.Component {
         return (
             <div className="field">
             <form onSubmit = {this.props.isEditing ? 
-            this.postEdit
+            this.postEdit()
             :
             this.submitHandler} id="threadPost">
                 <div>
@@ -84,7 +84,7 @@ class ThreadPost extends React.Component {
                     placeholder = "Tittel"
                     onChange = {this.changeHandler}/>
                 </div>
-            </form>
+            
             <textarea
                 rows="12"
                 cols="64"
@@ -103,6 +103,7 @@ class ThreadPost extends React.Component {
                 form="threadPost">
                 Publiser
             </button>
+            </form>
         </div>
         )
     }
