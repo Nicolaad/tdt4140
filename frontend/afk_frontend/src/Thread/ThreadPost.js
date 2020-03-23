@@ -21,7 +21,8 @@ class ThreadPost extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    postEdit = () => {
+    postEdit= (e) =>  {
+        e.preventDefault()
         console.log("postedit running")
         console.log(this.props.threadID)
         let token = {
@@ -33,7 +34,10 @@ class ThreadPost extends React.Component {
                 "http://127.0.0.1:8000/threads/" + this.props.threadID + "/", this.state, token 
                 
             )
-            .then(r => console.log(r.status))
+            .then(r =>{
+                 console.log(r.status)
+                 //rerender thread here
+            })
             .catch(e => console.log(e));
     }
 
@@ -66,7 +70,7 @@ class ThreadPost extends React.Component {
         return (
             <div className="field">
             <form onSubmit = {this.props.isEditing ? 
-            this.postEdit()
+            this.postEdit
             :
             this.submitHandler} id="threadPost">
                 <div>
