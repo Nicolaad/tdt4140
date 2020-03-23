@@ -12,7 +12,6 @@ class Body extends React.Component {
             threads: []
         }
         this.fetchThreads = this.fetchThreads.bind(this)
-        this.fetchComments = this.fetchComments.bind(this)
     }
     async componentDidMount(){
         this.fetchThreads()
@@ -27,17 +26,7 @@ class Body extends React.Component {
             console.log(e)
         }
     }
-    async fetchComments(){
-        try {
-            let index =1;
-            const result = await axios.get('http://127.0.0.1:8000/comments?thread='+index)
-            return ([...result.data])
-            
-       } catch(e){
-           console.log(e)
-       }
-
-    }
+    
     //todo: add comments and style into clickedThread div   
     render () {
         let threadList = <p>Ingen threads</p>
