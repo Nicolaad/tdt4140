@@ -9,8 +9,14 @@ const axios = require("axios");
 function Thread(props) {
 
     let deleteThread = (threadID) => {
+        let token = {
+            headers: {
+            //Follow the format:  Authorization: 'JWT token
+            //eg :
+            Authorization: 'JWT '+ localStorage.getItem('token')
+         }}
         axios
-            .delete("http://127.0.0.1:8000/threads/" + threadID)
+            .delete("http://127.0.0.1:8000/threads/" + threadID, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 204) {
