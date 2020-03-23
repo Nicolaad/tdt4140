@@ -13,6 +13,7 @@ class Body extends React.Component {
         }
         this.fetchThreads = this.fetchThreads.bind(this)
     }
+    
     async componentDidMount(){
         this.fetchThreads()
     }
@@ -37,7 +38,8 @@ class Body extends React.Component {
                 title={thread.title}
                 dateCreated={thread.dateCreated}
                 postContent={thread.postContent}
-            />)
+            />
+            )
         }
         return (
             <div className="contentBody">
