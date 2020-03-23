@@ -1,12 +1,14 @@
-import React from "react";
 import "./Thread.css";
-
-
-const axios = require("axios");
-
-
+import EditPost from "../EditPost";
+import React, { useState } from "react";
+import Modal from "../Modal/Modal";
+import axios from "axios";
+import ThreadPost from "./ThreadPost";
 
 function Thread(props) {
+    const [isToggled, setToggled] = useState(false);
+
+    const toggleTrueFalse = () => setToggled(!isToggled);
 
     let deleteThread = (threadID) => {
         let token = {
@@ -24,22 +26,6 @@ function Thread(props) {
                     props.updateThreads()
                 }
             })
-    }
-
-    let postEdit = (threadID) => {
-        let token = {
-            headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
-            Authorization: 'JWT '+ localStorage.getItem('token')
-         }}
-         axios
-            .put(
-                "http://127.0.0.1:8000/threads/" + threadID,  
-                
-            )
-            .then(r => console.log(r.status))
-            .catch(e => console.log(e));
     }
 
     let postVote = (threadID, boolean) => {
@@ -62,19 +48,34 @@ function Thread(props) {
         return (
             <div className="threadBody">
 
+                {isToggled ? 
+                <div>
+                <ThreadPost
+                threadID={props.threadID}
+                postTitle={props.title}
+                postContent={props.postContent}
+                isEditing={true}/>
+                <button className="button1" onClick={toggleTrueFalse}>Cancel</button>
+                </div> :
+                <div>
                 <h2>{props.ownername}</h2>
                 <h2>{props.title}</h2>
             <p>dato: {props.dateCreated}</p>
                 <p>
                     {props.postContent}
                 </p>
-                <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
-                <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
+                <button className="button1" onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
+                <button className="button1" onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
                 {props.username == props.ownername ? 
-                <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
+                <div>
+                <button className="button1" onClick={toggleTrueFalse}>Edit</button>
+                <button className="button1" onClick={() => deleteThread(props.threadID)}>Delete</button> </div>
+                :
                 <p></p>
                 }
-            </div>
+                </div>
+            }
+            </div>       
         )
     }
 
