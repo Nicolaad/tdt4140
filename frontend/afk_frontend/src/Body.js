@@ -13,6 +13,7 @@ class Body extends React.Component {
         }
         this.fetchThreads = this.fetchThreads.bind(this)
     }
+    
     async componentDidMount(){
         this.fetchThreads()
     }
@@ -31,7 +32,6 @@ class Body extends React.Component {
     render () {
         let threadList = <p>Ingen threads</p>
         if (this.state.threads){
-
             threadList = this.state.threads.map((thread) => 
             //note the duplicate <Thread/>, first one representing the clicable text -
             // the second represents the displayed text when clicked
@@ -40,6 +40,11 @@ class Body extends React.Component {
                 modalProps={{ triggerText: 
                     <div>
                         <Thread
+                            isFullThread={false}
+                            isAuthenticated={this.props.isAuthenticated}
+                            username={this.props.username}
+                            currentUserVote={thread.current_user_vote}
+                            updateThreads={this.fetchThreads}
                             threadID={thread.id}
                             downvoteCount={thread.downvotes}
                             upvoteCount={thread.upvotes}
@@ -52,7 +57,13 @@ class Body extends React.Component {
                     ,isFullThread:true, id:thread.id, isAuthenticated:this.props.isAuthenticated}}
                         modalContent={
                             <div className="clickedThread">
-                                <Thread threadID={thread.id}
+                                <Thread
+                                    isFullThread={true}
+                                    isAuthenticated={this.props.isAuthenticated}
+                                    username={this.props.username}
+                                    currentUserVote={thread.current_user_vote}
+                                    updateThreads={this.fetchThreads} 
+                                    threadID={thread.id}
                                     downvoteCount={thread.downvotes}
                                     upvoteCount={thread.upvotes}
                                     ownername={thread.ownername}
@@ -63,7 +74,6 @@ class Body extends React.Component {
                 />
             </div>
             )
-            
         }
         return (
             <div className="contentBody">
@@ -71,7 +81,7 @@ class Body extends React.Component {
                  <div className="threadCreateButton">
                  <Modal
                  modalProps={{triggerText: "Opprett tråd"}} 
-                 modalContent={<ThreadPost updateThreads={this.fetchThreads}/>} />
+                 modalContent={<ThreadPost isEditing={false} updateThreads={this.fetchThreads}/>} />
              </div>
              :
              <div></div>
