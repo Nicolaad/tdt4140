@@ -4,16 +4,6 @@ import EditPost from "../EditPost";
 import Modal from "../Modal/Modal";
 import axios from "axios";
 
-
-<<<<<<< HEAD
-function Thread(props) {  
-    
-    return (
-=======
-const axios = require("axios");
-
-
-
 function Thread(props) {
 
     let deleteThread = (threadID) => {
@@ -52,7 +42,6 @@ function Thread(props) {
             .catch(e => console.log(e));
         }
         return (
->>>>>>> a93bed7d050f1dec4778d51beaf53706efb082ab
             <div className="threadBody">
 
                 <h2>{props.ownername}</h2>
@@ -61,20 +50,17 @@ function Thread(props) {
                 <p>
                     {props.postContent}
                 </p>
-<<<<<<< HEAD
                 <div className = "editbutton">
                     <Modal
                     modalProps={{triggerText: "Rediger"}} 
                     modalContent={<EditPost />} />
                 </div>
-=======
                  <button onClick={() => postVote(props.threadID, "False")}>Downvote:{props.downvoteCount}</button>
                  <button onClick={() => postVote(props.threadID, "True")}>Upvote:{props.upvoteCount}</button>
                 {props.username == props.ownername ? 
                 <button onClick={() => deleteThread(props.threadID)}>Delete</button> :
                 <p></p>
                 }
->>>>>>> a93bed7d050f1dec4778d51beaf53706efb082ab
             </div>
         )
     }
