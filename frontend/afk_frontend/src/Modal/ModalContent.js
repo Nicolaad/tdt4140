@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import "./Modal.css";
 export class ModalContent extends Component {
+  
   render() {
+    let modalAreaSize = "modal-area";
+    if (this.props.bigView){
+      modalAreaSize = "modal-area-big"
+    }
     return ReactDOM.createPortal(
       <FocusTrap>
         <aside
@@ -15,7 +20,7 @@ export class ModalContent extends Component {
           onClick={this.props.onClickOutside}
           onKeyDown={this.props.onKeyDown}
         >
-          <div className="modal-area" ref={this.props.modalRef}>
+          <div className={modalAreaSize} ref={this.props.modalRef}>
             <button
               ref={this.props.buttonRef}
               aria-label="Close Modal"

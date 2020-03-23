@@ -37,12 +37,13 @@ export class Modal extends Component {
   render() {
 
     var modalContent;
+    var bigView = false
     //append new things to the modal content here
-    if(this.props.modalProps.isNotButton){
+    if(this.props.modalProps.isFullThread){
       modalContent= <div>{this.props.modalContent} 
         <CommentManager id={this.props.modalProps.id} isAuthenticated = {this.props.modalProps.isAuthenticated}/>
         </div>
-      
+      bigView = true;
     }else{
       modalContent = this.props.modalContent;
     }
@@ -53,7 +54,7 @@ export class Modal extends Component {
           showModal={this.showModal}
           buttonRef={n => (this.TriggerButton = n)}
           triggerText={this.props.modalProps.triggerText}
-          isNotButton={this.props.modalProps.isNotButton}
+          isFullThread={this.props.modalProps.isFullThread}
         />
         {this.state.isShown ? (
           <ModalContent
@@ -63,6 +64,7 @@ export class Modal extends Component {
             content={modalContent}
             onKeyDown={this.onKeyDown}
             onClickOutside={this.onClickOutside}
+            bigView={bigView}
           />
         ) : (
           <React.Fragment />

@@ -60,7 +60,7 @@ class Body extends React.Component {
                             postContent={thread.postContent}
                         />
                     </div>
-                    ,isNotButton:true, id:thread.id, isAuthenticated:this.props.isAuthenticated}}
+                    ,isFullThread:true, id:thread.id, isAuthenticated:this.props.isAuthenticated}}
                         modalContent={
                             <div className="clickedThread">
                                 <Thread threadID={thread.id}
