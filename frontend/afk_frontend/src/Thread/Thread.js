@@ -51,7 +51,8 @@ function Thread(props) {
                 {'upvote': boolean},
                 token 
             )
-            .then(r => console.log(r.status))
+            .then(props.updateThreads())
+            
             .catch(e => console.log(e));
         }
 
@@ -83,7 +84,7 @@ function Thread(props) {
                 <p>{props.postContent}</p>
 
                 <button className="button1" onClick={(ev) => postVote(props.threadID, "False", ev)}>Downvote:{props.downvoteCount}</button>
-                <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
+                <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}><i class="fas fa-arrow-up"></i> {props.upvoteCount}</button>
                 
                 
                 {props.username == props.ownername&& props.isFullThread   ? 
