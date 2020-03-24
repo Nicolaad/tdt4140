@@ -103,3 +103,17 @@ box-shadow: 0 0 4px currentColor;
     height: 100px;
     position: relative;
 }
+
+#threadEditingTitle, #threadPostTitle{
+    width:80%;
+
+}
+#threadEditingContent, #threadPostContent{
+    width:80%;
+    resize: none;
+    
+    
+}
+#threadPost{
+    text-align: center;
+}

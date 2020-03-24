@@ -82,7 +82,7 @@ class ThreadPost extends React.Component {
                     type="text" 
                     name="title" 
                     className="inputbox"
-                    id="threadPostTitle"
+                    id={this.props.isEditing ?  "threadEditingTitle" : "threadPostTitle" }
                     defaultValue = {this.props.isEditing ? 
                         this.props.postTitle :
                         "" }
@@ -92,13 +92,13 @@ class ThreadPost extends React.Component {
             
             <textarea
                 rows="12"
-                cols="64"
+                cols="50"
                 className="inputbox"
                 name="postContent"
                 form="threadPost"
                 placeholder="Skriv her"
                 defaultValue={this.props.postContent}
-                id = "threadPostContent"
+                id = {this.props.isEditing ?  "threadEditingContent" : "threadPostContent" }
                 onChange= {this.changeHandler}>{text}
             </textarea>
             <button 
