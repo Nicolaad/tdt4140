@@ -32,28 +32,34 @@ function Thread(props) {
             })
     }
 
-
-    
-
     let postVote = (threadID, boolean, e) => {
-            
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
         let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
-            Authorization: 'JWT '+ sessionStorage.getItem('token')
-         }}
-        axios
-            .put(
-                "http://127.0.0.1:8000/threads/" + threadID + "/vote/", 
-                {'upvote': boolean},
-                token 
-            )
-            .then(r => console.log(r.status))
-            .catch(e => console.log(e));
+                Authorization: 'JWT ' + sessionStorage.getItem('token')
+            }
         }
+        let uservote = (boolean ? 1 : 2);
+        if (props.currentUserVote === uservote) {
+            axios
+                .delete(
+                    "http://127.0.0.1:8000/threads/" + threadID + "/vote/",
+                    token
+                )
+                .then(r => console.log(r.status))
+                .catch(e => console.log(e));
+        } else {
+            axios
+                .put(
+                    "http://127.0.0.1:8000/threads/" + threadID + "/vote/",
+                    { 'upvote': boolean },
+                    token
+                )
+                .then(r => console.log(r.status))
+                .catch(e => console.log(e));
+        }
+    }
 
     const date = new Date(props.dateCreated)
     let displayDate = date.getDate() + "/" + date.getMonth() + "/"+ date.getFullYear()+ ", " + date.getHours() + ":"
@@ -82,9 +88,12 @@ function Thread(props) {
                 <p>{displayDate}</p>
                 <p>{props.postContent}</p>
 
-                <button className="button1" onClick={(ev) => postVote(props.threadID, "False", ev)}>Downvote:{props.downvoteCount}</button>
-                <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
-                
+                {props.currentUserVote === 2 ? <button className="buttonVoted" onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button> :
+                    <button className="button1" onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button>
+                }
+                {props.currentUserVote === 1 ? <button className="buttonVoted" onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button> :
+                    <button className="button1" onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button>
+                }                
                 
                 {props.username == props.ownername&& props.isFullThread   ? 
                 <div>

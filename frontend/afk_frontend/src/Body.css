@@ -47,6 +47,18 @@
   transition: background 0.15s ease-out;
 }
 
+.buttonVoted {
+    color: #B967FF;
+    padding: 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    background: #1E1D1B;
+    border: 2px solid #B967FF;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease-out;
+  }
+
 button:hover {
     background: #FDFFFF;
     color: #080705;
