@@ -26,6 +26,7 @@ function Thread(props) {
             .then(response => {
                 console.log(response)
                 if (response.status == 204) {
+                    
                     props.updateThreads()
                 }
             })
@@ -65,16 +66,17 @@ function Thread(props) {
             <div className="threadBody">
                 {isToggled ? 
                 <div>
-                <ThreadPost
-                threadID={props.threadID}
-                postTitle={props.title}
-                postContent={props.postContent}
-                isEditing={true}
-                updateThreads={props.updateThreads()}/>
-                <button className="button1" onClick={toggleTrueFalse}>Cancel</button>
+                    <ThreadPost
+                    threadID={props.threadID}
+                    postTitle={props.title}
+                    postContent={props.postContent}
+                    isEditing={true}
+                    updateThreads={props.updateThreads}
+                    toggleTrueFalse={toggleTrueFalse}/>
+                    <button className="button1" onClick={toggleTrueFalse}>Cancel</button>
                 </div> :
+                
                 <div>
-
                 <h2>{props.ownername}</h2>
                 <h2>{props.title}</h2>
                 <p>{displayDate}</p>
@@ -82,6 +84,8 @@ function Thread(props) {
 
                 <button className="button1" onClick={(ev) => postVote(props.threadID, "False", ev)}>Downvote:{props.downvoteCount}</button>
                 <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
+                
+                
                 {props.username == props.ownername&& props.isFullThread   ? 
                 <div>
                 <button className="button1" onClick={(ev) => toggleTrueFalse(ev)}>Edit</button>

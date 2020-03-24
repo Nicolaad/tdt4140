@@ -36,7 +36,8 @@ class ThreadPost extends React.Component {
             )
             .then(r =>{
                  console.log(r.status)
-                 //rerender thread here
+                 this.props.updateThreads()
+                 this.props.toggleTrueFalse()
             })
             .catch(e => console.log(e));
     }
