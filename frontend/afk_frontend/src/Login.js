@@ -29,8 +29,8 @@ export default class Login extends Component{
             if (response.status == 200) {
                 //close popupp by calling the the close modal button
                 document.getElementsByClassName("_modal-close")[0].click();
-                localStorage.setItem('token', response.data.token);
-                localStorage.setItem('username', response.data.user.username);
+                sessionStorage.setItem('token', response.data.token);
+                sessionStorage.setItem('username', response.data.user.username);
                 this.props.authenticateFunction();
                 
 

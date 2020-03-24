@@ -19,7 +19,7 @@ function Thread(props) {
             headers: {
             //Follow the format:  Authorization: 'JWT token
             //eg :
-            Authorization: 'JWT '+ localStorage.getItem('token')
+            Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
             .delete("http://127.0.0.1:8000/threads/" + threadID, token)
@@ -43,7 +43,7 @@ function Thread(props) {
             headers: {
             //Follow the format:  Authorization: 'JWT token
             //eg :
-            Authorization: 'JWT '+ localStorage.getItem('token')
+            Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
             .put(

@@ -27,7 +27,7 @@ class ThreadPost extends React.Component {
         console.log(this.props.threadID)
         let token = {
             headers: {
-            Authorization: 'JWT '+ localStorage.getItem('token')
+            Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
          axios
             .put(
@@ -49,7 +49,7 @@ class ThreadPost extends React.Component {
         let token = {
             headers: {
 
-            Authorization: 'JWT '+ localStorage.getItem('token')
+            Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
             .post('http://127.0.0.1:8000/threads/', this.state, token)

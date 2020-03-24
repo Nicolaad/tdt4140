@@ -6,9 +6,9 @@ import Body from "./Body";
 class App extends Component {
   constructor(props){
     super(props)
-    this.state= {isAuthenticated: (localStorage.getItem('token')!== null),
-    token: localStorage.getItem('token'),
-    username: localStorage.getItem('username')}
+    this.state= {isAuthenticated: (sessionStorage.getItem('token')!== null),
+    token: sessionStorage.getItem('token'),
+    username: sessionStorage.getItem('username')}
 
     this.deAuthenticate = this.deAuthenticate.bind(this)
     this.authenticate = this.authenticate.bind(this)
@@ -18,13 +18,13 @@ class App extends Component {
 
   deAuthenticate(){
     this.setState({isAuthenticated: false, username: null, token: null},)
-    localStorage.clear()
+    sessionStorage.clear()
   }
 
   authenticate(){
     this.setState({isAuthenticated: true,
-    username: localStorage.getItem('username'),
-    token: localStorage.getItem('token')})
+    username: sessionStorage.getItem('username'),
+    token: sessionStorage.getItem('token')})
   }
   render() {
     return (

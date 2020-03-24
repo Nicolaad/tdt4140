@@ -30,10 +30,10 @@ class CommentManager extends React.Component {
         e.preventDefault()
         let token = {
             headers: {
-            Authorization: 'JWT '+ localStorage.getItem('token')
+            Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
          let commentData= {
-             title: "placeholder", 
+             title: "disavled", 
             postContent: this.state.postContent,
             thread: this.props.id
          } 

@@ -21,7 +21,7 @@ class EditPost extends Component{
             headers: {
             //Follow the format:  Authorization: 'JWT token
             //eg :
-            Authorization: 'JWT '+ localStorage.getItem('token')
+            Authorization: 'JWT '+ sessionStorage.getItem('token')
          }} 
         axios
             .put('http://127.0.0.1:8000/threads/', this.state, yourConfig)
