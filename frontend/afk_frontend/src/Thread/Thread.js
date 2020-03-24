@@ -17,8 +17,6 @@ function Thread(props) {
         e.nativeEvent.stopImmediatePropagation();
         let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
@@ -88,11 +86,11 @@ function Thread(props) {
                 <p>{displayDate}</p>
                 <p>{props.postContent}</p>
 
-                {props.currentUserVote === 2 ? <button className="buttonVoted" onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button> :
-                    <button className="button1" onClick={() => postVote(props.threadID, false)}>Downvote:{props.downvoteCount}</button>
+                {props.currentUserVote === 2 ? <button className="buttonVoted" onClick={(ev) => postVote(props.threadID, false, ev)}>Downvote:{props.downvoteCount}</button> :
+                    <button className="button1" onClick={(ev) => postVote(props.threadID, false, ev)}>Downvote:{props.downvoteCount}</button>
                 }
-                {props.currentUserVote === 1 ? <button className="buttonVoted" onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button> :
-                    <button className="button1" onClick={() => postVote(props.threadID, true)}>Upvote:{props.upvoteCount}</button>
+                {props.currentUserVote === 1 ? <button className="buttonVoted" onClick={(ev) => postVote(props.threadID, true, ev)}>Upvote:{props.upvoteCount}</button> :
+                    <button className="button1" onClick={(ev) => postVote(props.threadID, true, ev)}>Upvote:{props.upvoteCount}</button>
                 }                
                 
                 {props.username == props.ownername&& props.isFullThread   ? 

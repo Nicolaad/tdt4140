@@ -22,7 +22,7 @@ class Body extends React.Component {
         if (this.props.isAuthenticated) {
             let token = {
                 headers: {
-                Authorization: 'JWT '+ localStorage.getItem('token')
+                Authorization: 'JWT '+ sessionStorage.getItem('token')
                 }
             }
             
