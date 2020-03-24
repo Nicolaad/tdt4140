@@ -23,7 +23,6 @@ class ThreadPost extends React.Component {
 
     postEdit= (e) =>  {
         e.preventDefault()
-        console.log("postedit running")
         console.log(this.props.threadID)
         let token = {
             headers: {
