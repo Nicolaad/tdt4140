@@ -16,12 +16,12 @@ class App extends Component {
   }
 
 
-  deAuthenticate(){
+  deAuthenticate = (e) =>{
     this.setState({isAuthenticated: false, username: null, token: null},)
     sessionStorage.clear()
   }
 
-  authenticate(){
+  authenticate = () =>{
     this.setState({isAuthenticated: true,
     username: sessionStorage.getItem('username'),
     token: sessionStorage.getItem('token')})
