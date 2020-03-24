@@ -5,6 +5,7 @@ from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from afk_backend.forum.models import Thread, Comment, threadVote
+from afk_backend.forum.permissions import IsOwnerOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
@@ -38,7 +39,8 @@ class GroupViewSet(viewsets.ModelViewSet):
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all().order_by('-dateCreated')
     serializer_class = ThreadSerializer
-    authentication_classes=(JSONWebTokenAuthentication,)
+    authentication_classes = (JSONWebTokenAuthentication,)
+    permission_classes = [IsOwnerOrReadOnly]
 
     def create(self, request):
         serializer_context = {
