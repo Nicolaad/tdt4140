@@ -24,7 +24,7 @@ function Thread(props) {
             .then(response => {
                 console.log(response)
                 if (response.status == 204) {
-                    
+                    document.getElementsByClassName("_modal-close")[0].click()
                     props.updateThreads()
                 }
             })
