@@ -101,14 +101,19 @@ class ThreadPost extends React.Component {
                 id = {this.props.isEditing ?  "threadEditingContent" : "threadPostContent" }
                 onChange= {this.changeHandler}>{text}
             </textarea>
-            <button 
-                className = "button1"
-                id="postthreadbutton" 
-                type="submit" 
-                form="threadPost">
-                Publiser
-            </button>
+            <div className="threadPostButtons">
+                {this.props.cancelButton}
+                <button 
+                    className = "button1"
+                    type="submit" 
+                    form="threadPost">
+                    Publiser
+                </button>
+                
+            </div>
+            
             </form>
+            
         </div>
         )
     }
