@@ -23,7 +23,7 @@ function Thread(props) {
             .delete("http://127.0.0.1:8000/threads/" + threadID, token)
             .then(response => {
                 console.log(response)
-                if (response.status == 204) {
+                if (response.status === 204) {
                     document.getElementsByClassName("_modal-close")[0].click()
                     props.updateThreads()
                 }
@@ -32,7 +32,7 @@ function Thread(props) {
 
 
     
-
+    //used by up/downvote buttons
     let postVote = (threadID, boolean, e) => {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
@@ -48,7 +48,9 @@ function Thread(props) {
             )
             .then(r => console.log(r.status))
             .catch(e => console.log(e));
-        }
+    }
+
+
 
     const date = new Date(props.dateCreated)
     let displayDate = date.getDate() + "/" + date.getMonth() + "/"+ date.getFullYear()+ ", " + date.getHours() + ":"
@@ -88,7 +90,7 @@ function Thread(props) {
                 <button className="button1" onClick={(ev) => toggleTrueFalse(ev)}>Rediger</button>
                 <button className="button1" onClick={(ev) => deleteThread(props.threadID, ev)}>Slett</button> </div>
                 :
-                <p></p>
+                null
                 }
                 </div>
             }

@@ -6,15 +6,10 @@ class ThreadPost extends React.Component {
 
     constructor(props) {
         super(props)
-        if (this.props.isEditing){
-            this.state = ({title: this.props.postTitle,
-            postContent: this.props.postContent})
-        }
-        else {
-            this.state = {
-                title: ""
-            }
-        }
+        
+        this.state = ({title: this.props.postTitle,
+        postContent: this.props.postContent})
+        
     }
 
     changeHandler = (e) => {
@@ -54,7 +49,7 @@ class ThreadPost extends React.Component {
             .post('http://127.0.0.1:8000/threads/', this.state, token)
             .then(response => {
                 console.log(response)
-                if (response.status == 201) {
+                if (response.status === 201) {
                     //close pop-up by calling the the close modal button
                     document.getElementsByClassName("_modal-close")[0].click()
                     this.props.updateThreads()
