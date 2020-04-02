@@ -68,7 +68,7 @@ function Thread(props) {
                     isEditing={true}
                     updateThreads={props.updateThreads}
                     toggleTrueFalse={toggleTrueFalse}
-                    cancelButton={<button className="button1" onClick={toggleTrueFalse}>Cancel</button>}></ThreadPost>
+                    cancelButton={<button className="button1" onClick={toggleTrueFalse}>Avbryt</button>}></ThreadPost>
 
                 </div> :
                 
