@@ -33,7 +33,7 @@ class CommentManager extends React.Component {
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
          let commentData= {
-             title: "disavled", 
+             title: "disabled", 
             postContent: this.state.postContent,
             thread: this.props.id
          } 
