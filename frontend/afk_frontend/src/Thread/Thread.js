@@ -83,10 +83,10 @@ function Thread(props) {
                 <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
                 */}
                 
-                {props.username == props.ownername&& props.isFullThread   ? 
+                {props.username === props.ownername&& props.isFullThread   ? 
                 <div>
-                <button className="button1" onClick={(ev) => toggleTrueFalse(ev)}>Edit</button>
-                <button className="button1" onClick={(ev) => deleteThread(props.threadID, ev)}>Delete</button> </div>
+                <button className="button1" onClick={(ev) => toggleTrueFalse(ev)}>Rediger</button>
+                <button className="button1" onClick={(ev) => deleteThread(props.threadID, ev)}>Slett</button> </div>
                 :
                 <p></p>
                 }
