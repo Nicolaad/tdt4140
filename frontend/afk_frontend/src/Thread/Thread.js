@@ -77,10 +77,11 @@ function Thread(props) {
                 <h2>{props.title}</h2>
                 <p>{displayDate}</p>
                 <p>{props.postContent}</p>
-
+                
+                {/* temporarily disabled as the up/downVotes does contain some bugs that needs to be ironed out before implementation }
                 <button className="button1" onClick={(ev) => postVote(props.threadID, "False", ev)}>Downvote:{props.downvoteCount}</button>
                 <button className="button1" onClick={(ev) => postVote(props.threadID, "True", ev)}>Upvote:{props.upvoteCount}</button>
-                
+                */}
                 
                 {props.username == props.ownername&& props.isFullThread   ? 
                 <div>
