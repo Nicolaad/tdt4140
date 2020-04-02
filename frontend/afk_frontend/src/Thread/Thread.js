@@ -1,7 +1,5 @@
 import "./Thread.css";
-import EditPost from "../EditPost";
 import React, { useState } from "react";
-import Modal from "../Modal/Modal";
 import axios from "axios";
 import ThreadPost from "./ThreadPost";
 
