@@ -16,8 +16,8 @@ class CommentManager extends React.Component {
     
     async fetchComments(){
         try {
-            const result = await axios.get('http://127.0.0.1:8000/comments?thread='+this.props.id)
-            if (result.status == 200){
+            const result = await axios.get(localStorage.getItem("djangoUrl")+"comments?thread="+this.props.id)
+            if (result.status === 200){
                 this.setState({ comments: [...result.data]})
                 console.log(this.state.comments)
             }
@@ -38,7 +38,7 @@ class CommentManager extends React.Component {
             thread: this.props.id
          } 
         axios
-            .post('http://127.0.0.1:8000/comments/',commentData, token)
+            .post(localStorage.getItem("djangoUrl") + "comments/",commentData, token)
             .then(response => {
                 console.log(response)
                 if (response.status == 201) {

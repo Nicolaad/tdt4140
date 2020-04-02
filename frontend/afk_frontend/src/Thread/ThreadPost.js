@@ -6,9 +6,7 @@ class ThreadPost extends React.Component {
 
     constructor(props) {
         super(props)
-        
-        this.state = ({title: this.props.postTitle,
-        postContent: this.props.postContent})
+        this.state = ({title: this.props.postTitle, postContent: this.props.postContent})
         
     }
 
@@ -25,10 +23,8 @@ class ThreadPost extends React.Component {
          }}
          axios
             .put(
-                "http://127.0.0.1:8000/threads/" + this.props.threadID + "/", this.state, token 
-                
-            )
-            .then(r =>{
+                localStorage.getItem("djangoUrl")+"threads/" + this.props.threadID + "/", this.state, token )
+                .then(r =>{
                  console.log(r.status)
                  this.props.updateThreads()
                  this.props.toggleTrueFalse()
@@ -42,11 +38,10 @@ class ThreadPost extends React.Component {
         console.log(this.state)
         let token = {
             headers: {
-
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
-            .post('http://127.0.0.1:8000/threads/', this.state, token)
+            .post(localStorage.getItem("djangoUrl") + "threads/", this.state, token)
             .then(response => {
                 console.log(response)
                 if (response.status === 201) {
@@ -61,7 +56,7 @@ class ThreadPost extends React.Component {
             })
     }
     render() {
-        const { title, text } = this.state;
+
         return (
             <div className="field">
             <form onSubmit = {this.props.isEditing ? 
@@ -93,7 +88,7 @@ class ThreadPost extends React.Component {
                 placeholder="Skriv her"
                 defaultValue={this.props.postContent}
                 id = {this.props.isEditing ?  "threadEditingContent" : "threadPostContent" }
-                onChange= {this.changeHandler}>{text}
+                onChange= {this.changeHandler}>
             </textarea>
             <div className="threadPostButtons">
                 {this.props.cancelButton}

@@ -22,10 +22,10 @@ class PostForm extends React.Component {
     submitHandler = (e) => {
         e.preventDefault()
         axios
-            .post('http://127.0.0.1:8000/users/', this.state)
+            .post(localStorage.getItem("djangoUrl") + "users/", this.state)
             .then(response => {
                 console.log(response)
-                if (response.status == 201) {
+                if (response.status === 201) {
                     document.getElementsByClassName("_modal-close")[0].click();
                 }
             })

@@ -21,10 +21,10 @@ export default class Login extends Component{
     handleFormSubmit = event => {
         event.preventDefault();
     
-        var apiBaseUrl ="http://127.0.0.1:8000/token-auth/";
+        var tokenAuthUrl = localStorage.getItem("djangoUrl") + "token-auth/";
     
         axios
-        .post(apiBaseUrl, this.state)
+        .post(tokenAuthUrl, this.state)
         .then(response => {
             if (response.status == 200) {
                 //close popupp by calling the the close modal button

@@ -20,7 +20,7 @@ class Body extends React.Component {
     
     async fetchThreads(){
         try {
-             const result = await axios.get('http://127.0.0.1:8000/threads/')
+             const result = await axios.get(localStorage.getItem("djangoUrl") + "threads/")
              this.setState({ threads: [...result.data.results]})
              
         } catch(e){

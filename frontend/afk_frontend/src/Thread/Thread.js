@@ -20,7 +20,7 @@ function Thread(props) {
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
-            .delete("http://127.0.0.1:8000/threads/" + threadID, token)
+            .delete(localStorage.getItem("djangoUrl")+"threads/" + threadID, token)
             .then(response => {
                 console.log(response)
                 if (response.status === 204) {
@@ -42,7 +42,7 @@ function Thread(props) {
          }}
         axios
             .put(
-                "http://127.0.0.1:8000/threads/" + threadID + "/vote/", 
+                localStorage.getItem("djangoUrl")+"threads/" + threadID + "/vote/", 
                 {'upvote': boolean},
                 token 
             )
