@@ -17,8 +17,6 @@ function Thread(props) {
         e.nativeEvent.stopImmediatePropagation();
         let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
@@ -26,7 +24,7 @@ function Thread(props) {
             .then(response => {
                 console.log(response)
                 if (response.status == 204) {
-                    
+                    document.getElementsByClassName("_modal-close")[0].click()
                     props.updateThreads()
                 }
             })
@@ -36,13 +34,10 @@ function Thread(props) {
     
 
     let postVote = (threadID, boolean, e) => {
-            
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
         let token = {
             headers: {
-            //Follow the format:  Authorization: 'JWT token
-            //eg :
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
