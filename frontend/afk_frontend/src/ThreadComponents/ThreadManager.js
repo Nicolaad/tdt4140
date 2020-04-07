@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import Modal from "./Modal/Modal";
-import ThreadPost from "./ThreadComponents/ThreadPost";
-import "./Styles/Body.css";
-import Thread from "./ThreadComponents/Thread";
+import Modal from "../Modal/Modal";
+import ThreadPost from "./ThreadPost";
+import "../Styles/Body.css";
+import Thread from "./Thread";
 
 class ThreadManager extends React.Component {
     constructor(props){

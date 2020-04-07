@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar/NavBar";
-import ThreadManager from "./ThreadManager";
+import ThreadManager from "./ThreadComponents/ThreadManager";
 
 class App extends Component {
   constructor(props){
