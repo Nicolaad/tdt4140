@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 import Modal from "./Modal/Modal";
-import ThreadPost from "./Thread/ThreadPost";
+import ThreadPost from "./ThreadComponents/ThreadPost";
 import "./Body.css";
-import Thread from "./Thread/Thread";
+import Thread from "./ThreadComponents/Thread";
 
 class Body extends React.Component {
     constructor(props){

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ModalContent from './ModalContent';
 import ModalTrigger from './ModalTrigger';
 
-import CommentManager from '../Thread/CommentManager'
+import CommentManager from '../ThreadComponents/CommentManager'
 export class Modal extends Component {
   constructor() {
     super();

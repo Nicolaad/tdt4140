@@ -1,5 +1,5 @@
 import React from 'react'
-import Comment from "../Thread/Comment"
+import Comment from "./Comment"
 import axios from "axios";
 
 class CommentManager extends React.Component {
