@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "../Body.css";
+import "../Styles/Body.css";
 
 class PostForm extends React.Component {
 
