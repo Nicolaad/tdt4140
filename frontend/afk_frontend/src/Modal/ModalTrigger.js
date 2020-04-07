@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Modal.css"
+import "../Styles/Modal.css"
 class ModalTrigger extends Component {
   render() {
     //make element with isFullThread=true if modal is a expandable thread

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react';
-import "./Modal.css";
+import "../Styles/Modal.css";
 export class ModalContent extends Component {
   
   render() {
