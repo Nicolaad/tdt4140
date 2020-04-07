@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
-import "./Login.css";
+import "./Styles/Login.css";
 import "./Styles/Body.css";
 //import './Login.css'; temp removed, as it need fixing
 

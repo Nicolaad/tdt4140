@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./Modal/Modal";
 import PostForm from "./RegisterUser/PostForm";
-import "./NavBar.css";
+import "./Styles/NavBar.css";
 import Login from "./Login"
  
 class NavBar extends Component {

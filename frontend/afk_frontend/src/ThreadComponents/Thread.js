@@ -1,4 +1,4 @@
-import "./Thread.css";
+import "../Styles/Thread.css";
 import React, { useState } from "react";
 import axios from "axios";
 import ThreadPost from "./ThreadPost";
