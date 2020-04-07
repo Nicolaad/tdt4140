@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar/NavBar";
-import Body from "./Body";
+import ThreadManager from "./ThreadManager";
 
 class App extends Component {
   constructor(props){
@@ -43,7 +43,7 @@ class App extends Component {
             <NavBar isAuthenticated={false} authenticateFunction={()=> this.authenticate()}/>
           </div>
           }
-          <Body 
+          <ThreadManager 
             username={this.state.username}
             isAuthenticated={this.state.isAuthenticated}
           />

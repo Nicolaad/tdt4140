@@ -5,7 +5,7 @@ import ThreadPost from "./ThreadComponents/ThreadPost";
 import "./Styles/Body.css";
 import Thread from "./ThreadComponents/Thread";
 
-class Body extends React.Component {
+class ThreadManager extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -92,4 +92,4 @@ class Body extends React.Component {
     }
 }
 
-export default Body;
+export default ThreadManager;
