@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "./Modal/Modal";
-import PostForm from "./RegisterUser/PostForm";
+import RegisterForm from "./RegisterUser/RegisterForm";
 import "./Styles/NavBar.css";
 import Login from "./Login"
  
@@ -18,7 +18,7 @@ class NavBar extends Component {
               :
             <div className="leftbuttonsnav">
               <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<Login authenticateFunction={this.props.authenticateFunction} /> } />
-              <Modal modalProps={{triggerText: "Registrer bruker"}} modalContent={<PostForm />} />
+              <Modal modalProps={{triggerText: "Registrer bruker"}} modalContent={<RegisterForm />} />
             </div>
           }
         </div>

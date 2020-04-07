@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "../Styles/Body.css";
 
-class PostForm extends React.Component {
+class RegisterForm extends React.Component {
 
     constructor(props) {
         super(props)
@@ -76,4 +76,4 @@ class PostForm extends React.Component {
     }
 }
 
-export default PostForm
+export default RegisterForm
