@@ -4,7 +4,7 @@ import "../Styles/Login.css";
 import "../Styles/Body.css";
 //import './Login.css'; temp removed, as it need fixing
 
-export default class Login extends Component{
+export default class LoginForm extends Component{
     constructor(props) {
         super(props)
         this.state = {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "../Modal/Modal";
 import RegisterForm from "./RegisterForm";
 import "../Styles/NavBar.css";
-import Login from "./Login"
+import LoginForm from "./LoginForm"
  
 class NavBar extends Component {
   render() {
@@ -17,7 +17,7 @@ class NavBar extends Component {
             </div>
               :
             <div className="leftbuttonsnav">
-              <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<Login authenticateFunction={this.props.authenticateFunction} /> } />
+              <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<LoginForm authenticateFunction={this.props.authenticateFunction} /> } />
               <Modal modalProps={{triggerText: "Registrer bruker"}} modalContent={<RegisterForm />} />
             </div>
           }
