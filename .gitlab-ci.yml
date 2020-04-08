@@ -3,19 +3,19 @@
     stages:
       - build
       - test
-    
+
     cache:
-    paths:
-      - frontend/afk_frontend/node_modules/
+      paths:
+        - prefix frontend/afk_frontend/node_modules/
 
     install_dependencies:
       stage: build
       script:
-        - npm install --prefix frontend/afk_frontend
+        - npm install
       artifacts:
         paths:
-          - frontend/afk_frontend/node_modules/
+          - prefix frontend/afk_frontend/node_modules/
 
-    testing:
+    testing_testing:
       stage: test
       script: npm test --prefix frontend/afk_frontend
