@@ -3,15 +3,12 @@
     stages:
       - build
       - test
-      
+
     install_dependencies:
       stage: build
       script:
         - npm install
-      artifacts:
-        paths:
-          - node_modules/
 
     testing:
       stage: test
-      script: npm test --prefix frontend/afk_frontend
+      script: npm test
