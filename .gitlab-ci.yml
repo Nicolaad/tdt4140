@@ -6,16 +6,16 @@
 
     cache:
       paths:
-        - prefix frontend/afk_frontend/node_modules/
-
+        - frontend/afk_frontend/node_modules/
+        
     install_dependencies:
       stage: build
       script:
-        - npm install
+        - npm install --prefix frontend/afk_frontend/.
       artifacts:
         paths:
-          - prefix frontend/afk_frontend/node_modules/
+          - node_modules/
 
-    testing_testing:
+    testing:
       stage: test
       script: npm test --prefix frontend/afk_frontend
