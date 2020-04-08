@@ -3,7 +3,11 @@
     stages:
       - build
       - test
-      
+    
+    cache:
+    paths:
+      - frontend/afk_frontend/node_modules/
+
     install_dependencies:
       stage: build
       script:
