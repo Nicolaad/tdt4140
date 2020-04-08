@@ -8,6 +8,9 @@
       stage: build
       script:
         - npm install --prefix frontend/afk_frontend
+      artifacts:
+        paths:
+          - frontend/afk_frontend/node_modules/
 
     testing:
       stage: test
