@@ -1,0 +1,17 @@
+    image: node:latest
+
+    stages:
+      - build
+      - test
+      
+    install_dependencies:
+      stage: build
+      script:
+        - npm install --prefix frontend/afk_frontend
+      artifacts:
+        paths:
+          - frontend/afk_frontend/node_modules/
+
+    testing:
+      stage: test
+      script: npm test --prefix frontend/afk_frontend
