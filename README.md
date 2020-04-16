@@ -44,8 +44,8 @@ Then install the required python dependencies by running:
 #### Updating the database
 
 On installation and major changes, you need to migrate the database - this is done by typing the following command while in the viritual enviroment:   
-    ```python manage.py migrate forum```   
-    ```python manage.py makemgirations```
+```python manage.py migrate forum```   
+```python manage.py makemgirations```
 
 ### Running the backend
 
