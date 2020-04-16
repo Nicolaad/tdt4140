@@ -15,10 +15,10 @@ This project is divided into two components. a front end, using DjangoREST, and 
 #### Viritual enviroment
 The viritual enviroment makes sure that your python enviroment is not changed based on other projects, and reduces errors in setup.
 
-First of all, make sure you have Python XXX installed, and cloned the repository. Open up the terminal (for mac/linux, use powershell for windows) navigate to the repository, then follow these commangds:   
+First of all, make sure you have Python XXX installed, and cloned the repository. Open up the terminal (for mac/linux, use powershell for windows) navigate to the repository, then follow these commands:   
 First navigate into the backend folder with `cd backend`
 Then create the python viritual enviroment with `python3.8 -m venv env`
-You shpuld now have (env) visible in your terminal. If you close the terminal window, do the activate steps below to reinstantiate the enviroment. 
+You should now have (env) visible in your terminal. If you close the terminal window, do the activate steps below to reinstantiate the enviroment. 
 
 
 
