@@ -8,7 +8,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className = "navBar">
-        <img id = "logo" src = "AFK-logo side.png"/>
+        <img alt= "AFK forum logo" id = "logo" src = "AFK-logo side.png"/>
         <div className = "login">
           {this.props.isAuthenticated ? 
             <div className="leftbuttonsnav">

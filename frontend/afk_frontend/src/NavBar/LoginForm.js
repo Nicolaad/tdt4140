@@ -26,7 +26,7 @@ export default class LoginForm extends Component{
         axios
         .post(tokenAuthUrl, this.state)
         .then(response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 //close popupp by calling the the close modal button
                 document.getElementsByClassName("_modal-close")[0].click();
                 sessionStorage.setItem('token', response.data.token);

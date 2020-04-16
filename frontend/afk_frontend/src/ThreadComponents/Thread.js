@@ -31,6 +31,7 @@ function Thread(props) {
 
     
     //used by up/downvote buttons
+    /* disabled as up/downvotes are deactivated
     let postVote = (threadID, boolean, e) => {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
@@ -47,7 +48,7 @@ function Thread(props) {
             .then(r => console.log(r.status))
             .catch(e => console.log(e));
     }
-
+    */
 
 
     const date = new Date(props.dateCreated)

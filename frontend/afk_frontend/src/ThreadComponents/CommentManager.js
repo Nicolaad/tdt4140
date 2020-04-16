@@ -41,7 +41,7 @@ class CommentManager extends React.Component {
             .post(localStorage.getItem("djangoUrl") + "comments/",commentData, token)
             .then(response => {
                 console.log(response)
-                if (response.status == 201) {
+                if (response.status === 201) {
                     this.fetchComments()
                     this.setState({postContent:""})
                     document.getElementById("postComment").value=""
@@ -58,7 +58,9 @@ class CommentManager extends React.Component {
     render () {
         let commentList = <p>Her er det ingen episke kommentarer :(</p>
         if (this.state.comments){
+            
             commentList = this.state.comments.map((comment) => 
+            //eslint-disable-next-line
             <Comment key={comment.url.match(/([^\/]*)\/*$/)[1]} username={comment.ownername} date={comment.dateCreated} postContent={comment.postContent}></Comment>
             )
         }
