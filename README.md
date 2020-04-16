@@ -68,3 +68,9 @@ first of all, make sure you configure the djangoUrl field in `19/frontent/afk_fr
 ### How to run the frontend
 Navigate with your terminal into `19/frontent/afk_frontend` and run `npm install` to download all the dependencies. then run `npm start` The frontend should then be working.
 
+### Locally run tests with coverage 
+To run tests localy, and with test coverage, please navigate to `19/frontent/afk_frontend/src` and run:   
+`npm test -- --watch --coverage src`
+This will trigger all the tests to run, aswel ass display a chart over codecoverage.
+
+
