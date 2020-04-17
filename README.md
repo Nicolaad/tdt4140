@@ -26,8 +26,10 @@ To activate the enviroment run the script for your OS:
 Once done, you should have (env) visible in your terminal. If you close the terminal window, do the activate steps below to reinstantiate the enviroment. 
 
 ##### Windows(powershell)
-Activate the enviroment with the following command `./env/Scripts/activate.ps1`
-Caution! You might have to run set-executionPolicy RemoteSigned in powershell as an administrator if the command does not work
+Activate the enviroment with the following command `.\env\Scripts\activate.ps1`   
+If the command does not work, you mwill have to open powershell as an admin, then run:   
+`set-executionPolicy RemoteSigned`   
+Then navigate back while in the to the backend folder with your admin-powershell and try again.
 
 ##### Linux/mac
 Activate the viritual enviroment with `source env/bin/activate`
