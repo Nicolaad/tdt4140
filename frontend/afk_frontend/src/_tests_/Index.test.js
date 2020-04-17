@@ -10,6 +10,6 @@ describe("Application root", () => {
         div.id = "root"
         document.body.appendChild(div)
         require("../index.js")
-        expect(ReactDOM.render).toHaveBeenCalledWith(<App />, div)
+        expect(ReactDOM.render).toHaveBeenCalledWith(<App djangoUrl="http://127.0.0.1:8000/" />, div)
     })
 })

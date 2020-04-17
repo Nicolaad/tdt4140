@@ -20,7 +20,7 @@ afterEach(() => {
 describe("testing App.js", () => {
     it("App renders", () => {
         act(() => {
-            render(<App  />, container)
+            render(<App/>, container)
         })
         expect(container).toBeTruthy()
     })
