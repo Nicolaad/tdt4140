@@ -27,7 +27,7 @@ Once done, you should have (env) visible in your terminal. If you close the term
 
 ##### Windows(powershell)
 Activate the enviroment with the following command `.\env\Scripts\activate.ps1`   
-If the command does not work, you mwill have to open powershell as an admin, then run:   
+If the command does not work, you mwill have to open powershell as an admin, then run:     
 `set-executionPolicy RemoteSigned`   
 Then navigate back while in the to the backend folder with your admin-powershell and try again.
 
@@ -68,7 +68,8 @@ The frontend requires [Node. We recommend the LTS version ](https://nodejs.org/e
 first of all, make sure that the djangoUrl field in `19/frontent/afk_frontend/src/index.js` is your actuall django url (found when running the backend)
 
 ### How to run the frontend
-Navigate with your terminal into `19/frontent/afk_frontend` and run `npm install` to download all the dependencies. then run `npm start` The frontend should then be working.
+Open your terminal as an administrator, and navigate into `19/frontent/afk_frontend` and run `npm install` to download all the dependencies.
+Then run `npm start` The frontend should then be working.
 
 ### Locally run tests with coverage 
 To run tests localy in watchmode, and with test coverage, please navigate to `19/frontent/afk_frontend` and run:   
