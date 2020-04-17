@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import Comment from "../Thread/Comment"
+import React from 'react'
+import Comment from "./Comment"
 import axios from "axios";
 
 class CommentManager extends React.Component {
@@ -16,8 +16,8 @@ class CommentManager extends React.Component {
     
     async fetchComments(){
         try {
-            const result = await axios.get('http://127.0.0.1:8000/comments?thread='+this.props.id)
-            if (result.status == 200){
+            const result = await axios.get(localStorage.getItem("djangoUrl")+"comments?thread="+this.props.id)
+            if (result.status === 200){
                 this.setState({ comments: [...result.data]})
                 console.log(this.state.comments)
             }
@@ -33,15 +33,15 @@ class CommentManager extends React.Component {
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
          let commentData= {
-             title: "disavled", 
+             title: "disabled", 
             postContent: this.state.postContent,
             thread: this.props.id
          } 
         axios
-            .post('http://127.0.0.1:8000/comments/',commentData, token)
+            .post(localStorage.getItem("djangoUrl") + "comments/",commentData, token)
             .then(response => {
                 console.log(response)
-                if (response.status == 201) {
+                if (response.status === 201) {
                     this.fetchComments()
                     this.setState({postContent:""})
                     document.getElementById("postComment").value=""
@@ -58,7 +58,9 @@ class CommentManager extends React.Component {
     render () {
         let commentList = <p>Her er det ingen episke kommentarer :(</p>
         if (this.state.comments){
+            
             commentList = this.state.comments.map((comment) => 
+            //eslint-disable-next-line
             <Comment key={comment.url.match(/([^\/]*)\/*$/)[1]} username={comment.ownername} date={comment.dateCreated} postContent={comment.postContent}></Comment>
             )
         }

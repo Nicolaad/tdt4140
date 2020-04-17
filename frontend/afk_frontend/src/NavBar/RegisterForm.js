@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "../Body.css";
+import "../Styles/Body.css";
 
-class PostForm extends React.Component {
+class RegisterForm extends React.Component {
 
     constructor(props) {
         super(props)
@@ -22,15 +22,19 @@ class PostForm extends React.Component {
     submitHandler = (e) => {
         e.preventDefault()
         axios
-            .post('http://127.0.0.1:8000/users/', this.state)
+            .post(localStorage.getItem("djangoUrl") + "users/", this.state)
             .then(response => {
                 console.log(response)
-                if (response.status == 201) {
+                if (response.status === 201) {
                     document.getElementsByClassName("_modal-close")[0].click();
                 }
             })
             .catch(error => {
                 console.log(error)
+                if(error.response.status === 400){
+                    alert("brukernavnet er allerede tatt, prøv et annet")
+                }
+                
             })
     }
 
@@ -76,4 +80,4 @@ class PostForm extends React.Component {
     }
 }
 
-export default PostForm
+export default RegisterForm

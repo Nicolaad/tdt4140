@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-import Modal from "./Modal/Modal";
-import ThreadPost from "./Thread/ThreadPost";
-import "./Body.css";
-import Thread from "./Thread/Thread";
+import Modal from "../Modal/Modal";
+import ThreadPost from "./ThreadPost";
+import "../Styles/Body.css";
+import Thread from "./Thread";
 
-class Body extends React.Component {
+class ThreadManager extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -20,7 +20,7 @@ class Body extends React.Component {
     
     async fetchThreads(){
         try {
-             const result = await axios.get('http://127.0.0.1:8000/threads/')
+             const result = await axios.get(localStorage.getItem("djangoUrl") + "threads/")
              this.setState({ threads: [...result.data.results]})
              
         } catch(e){
@@ -92,4 +92,4 @@ class Body extends React.Component {
     }
 }
 
-export default Body;
+export default ThreadManager;

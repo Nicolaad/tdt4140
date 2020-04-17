@@ -1,5 +1,5 @@
 import React from "react";
-import "./Comment.css";
+import "../Styles/Comment.css";
 
 function Comment(props){
     const date = new Date(props.date)

@@ -1,6 +1,6 @@
 import React from "react"
 import { unmountComponentAtNode, render } from "react-dom"
-import Body from "../Body.js"
+import ThreadManager from "../ThreadComponents/ThreadManager.js"
 import { act } from "react-dom/test-utils"
 
 let container = null
@@ -20,7 +20,7 @@ afterEach(() => {
 describe("testing Body.js", () => {
     it("Body renders", () => {
         act(() => {
-            render(<Body  />, container)
+            render(<ThreadManager  />, container)
         })
         expect(container).toBeTruthy()
     })

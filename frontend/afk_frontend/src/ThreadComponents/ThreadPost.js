@@ -1,20 +1,13 @@
 import React from "react";
 import axios from "axios";
-import "../Body.css";
+import "../Styles/Body.css";
 
 class ThreadPost extends React.Component {
 
     constructor(props) {
         super(props)
-        if (this.props.isEditing){
-            this.state = ({title: this.props.postTitle,
-            postContent: this.props.postContent})
-        }
-        else {
-            this.state = {
-                title: ""
-            }
-        }
+        this.state = ({title: this.props.postTitle, postContent: this.props.postContent})
+        
     }
 
     changeHandler = (e) => {
@@ -30,10 +23,8 @@ class ThreadPost extends React.Component {
          }}
          axios
             .put(
-                "http://127.0.0.1:8000/threads/" + this.props.threadID + "/", this.state, token 
-                
-            )
-            .then(r =>{
+                localStorage.getItem("djangoUrl")+"threads/" + this.props.threadID + "/", this.state, token )
+                .then(r =>{
                  console.log(r.status)
                  this.props.updateThreads()
                  this.props.toggleTrueFalse()
@@ -47,14 +38,13 @@ class ThreadPost extends React.Component {
         console.log(this.state)
         let token = {
             headers: {
-
             Authorization: 'JWT '+ sessionStorage.getItem('token')
          }}
         axios
-            .post('http://127.0.0.1:8000/threads/', this.state, token)
+            .post(localStorage.getItem("djangoUrl") + "threads/", this.state, token)
             .then(response => {
                 console.log(response)
-                if (response.status == 201) {
+                if (response.status === 201) {
                     //close pop-up by calling the the close modal button
                     document.getElementsByClassName("_modal-close")[0].click()
                     this.props.updateThreads()
@@ -66,7 +56,7 @@ class ThreadPost extends React.Component {
             })
     }
     render() {
-        const { title, text } = this.state;
+
         return (
             <div className="field">
             <form onSubmit = {this.props.isEditing ? 
@@ -98,16 +88,21 @@ class ThreadPost extends React.Component {
                 placeholder="Skriv her"
                 defaultValue={this.props.postContent}
                 id = {this.props.isEditing ?  "threadEditingContent" : "threadPostContent" }
-                onChange= {this.changeHandler}>{text}
+                onChange= {this.changeHandler}>
             </textarea>
-            <button 
-                className = "button1"
-                id="postthreadbutton" 
-                type="submit" 
-                form="threadPost">
-                Publiser
-            </button>
+            <div className="threadPostButtons">
+                {this.props.cancelButton}
+                <button 
+                    className = "button1"
+                    type="submit" 
+                    form="threadPost">
+                    Publiser
+                </button>
+                
+            </div>
+            
             </form>
+            
         </div>
         )
     }

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Modal from "./Modal/Modal";
-import PostForm from "./RegisterUser/PostForm";
-import "./NavBar.css";
-import Login from "./Login"
+import Modal from "../Modal/Modal";
+import RegisterForm from "./RegisterForm";
+import "../Styles/NavBar.css";
+import LoginForm from "./LoginForm"
  
 class NavBar extends Component {
   render() {
     return (
       <div className = "navBar">
-        <img id = "logo" src = "AFK-logo side.png"/>
+        <img alt= "AFK forum logo" id = "logo" src = "AFK-logo side.png"/>
         <div className = "login">
           {this.props.isAuthenticated ? 
             <div className="leftbuttonsnav">
@@ -17,8 +17,8 @@ class NavBar extends Component {
             </div>
               :
             <div className="leftbuttonsnav">
-              <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<Login authenticateFunction={this.props.authenticateFunction} /> } />
-              <Modal modalProps={{triggerText: "Registrer bruker"}} modalContent={<PostForm />} />
+              <Modal modalProps={{triggerText: "Logg inn"}} modalContent={<LoginForm authenticateFunction={this.props.authenticateFunction} /> } />
+              <Modal modalProps={{triggerText: "Registrer bruker"}} modalContent={<RegisterForm />} />
             </div>
           }
         </div>

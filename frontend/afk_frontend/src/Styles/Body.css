@@ -75,6 +75,10 @@ box-shadow: 0 0 4px currentColor;
     margin-left: 183px;
     text-align: center;
 }
+.threadPostButtons button{
+    margin: 5px;
+    text-align: center;
+}
 
 #threadtitle {
     margin-bottom: 10px;

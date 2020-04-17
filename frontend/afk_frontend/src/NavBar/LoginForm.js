@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import axios from 'axios';
-import "./Login.css";
-import "./Body.css";
+import "../Styles/Login.css";
+import "../Styles/Body.css";
 //import './Login.css'; temp removed, as it need fixing
 
-export default class Login extends Component{
+export default class LoginForm extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -21,12 +21,12 @@ export default class Login extends Component{
     handleFormSubmit = event => {
         event.preventDefault();
     
-        var apiBaseUrl ="http://127.0.0.1:8000/token-auth/";
+        var tokenAuthUrl = localStorage.getItem("djangoUrl") + "token-auth/";
     
         axios
-        .post(apiBaseUrl, this.state)
+        .post(tokenAuthUrl, this.state)
         .then(response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 //close popupp by calling the the close modal button
                 document.getElementsByClassName("_modal-close")[0].click();
                 sessionStorage.setItem('token', response.data.token);
