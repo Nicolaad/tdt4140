@@ -144,6 +144,7 @@ REST_FRAMEWORK = {
     ),
 }
 
+# change token settings here
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'afk_backend.utils.my_jwt_response_handler',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3600)
