@@ -15,24 +15,23 @@ This project is divided into two components. a front end, using DjangoREST, and 
 #### Viritual enviroment
 The viritual enviroment makes sure that your python enviroment is not changed based on other projects, and reduces errors in setup.
 
-First of all, make sure you have Python XXX installed, and cloned the repository. Open up the terminal (for mac/linux, use powershell for windows) navigate to the repository, then follow these commands:   
+First of all, make sure you have [Python 3.8.1](https://www.python.org/downloads/release/python-381/) or later installed. Then clone the repository in a desired location. Open up the terminal (for mac/linux, use powershell for windows) navigate to into repository (`cd 19`), then follow these commands:   
 First navigate into the backend folder with `cd backend`
-Then create the python viritual enviroment with `python3.8 -m venv env`
-You should now have (env) visible in your terminal. If you close the terminal window, do the activate steps below to reinstantiate the enviroment. 
+Then create the python viritual enviroment with `python -m venv env`
+(if you are not running python 3.8.1 by default, you might have to specify it e.g `python3.8 -m venv env`. to check which is your default python, type ``python --version``)
 
-
-
+You then need to activate the enviroment.
 To activate the enviroment run the script for your OS:
 
+Once done, you should have (env) visible in your terminal. If you close the terminal window, do the activate steps below to reinstantiate the enviroment. 
 
 ##### Windows(powershell)
 Activate the enviroment with the following command `./env/Scripts/activate.ps1`
 Caution! You might have to run set-executionPolicy RemoteSigned in powershell as an administrator if the command does not work
-type `deactivate` to exit the enviroment.
 
 ##### Linux/mac
 Activate the viritual enviroment with `source env/bin/activate`
-To exit the viritual enviroment, type `deactivate`
+
 
 #### Installing dependencies
 
@@ -43,8 +42,9 @@ Then install the required python dependencies by running:
 
 #### Updating the database
 
-On installation and major changes, you need to migrate the database - this is done by typing the following command while in the viritual enviroment:   
-```python manage.py migrate forum```   
+On installation and when appylingmajor changes, you need to migrate the database - this is done by typing the following command while in the viritual enviroment:   
+
+```python manage.py migrate```   
 ```python manage.py makemgirations```
 
 ### Running the backend
@@ -62,14 +62,14 @@ The frontend requires that a backend runs in order to work properly. Please make
 
 ### How to setup the frontend
 
-The frontend requires node, please download it from here. 
-first of all, make sure you configure the djangoUrl field in `19/frontent/afk_frontend/src/index.js` to be your actuall django url (found when running the backend)
+The frontend requires [Node. We recommend the LTS version ](https://nodejs.org/en/download/)
+first of all, make sure that the djangoUrl field in `19/frontent/afk_frontend/src/index.js` is your actuall django url (found when running the backend)
 
 ### How to run the frontend
 Navigate with your terminal into `19/frontent/afk_frontend` and run `npm install` to download all the dependencies. then run `npm start` The frontend should then be working.
 
 ### Locally run tests with coverage 
-To run tests localy, and with test coverage, please navigate to `19/frontent/afk_frontend/src` and run:   
+To run tests localy in watchmode, and with test coverage, please navigate to `19/frontent/afk_frontend` and run:   
 `npm test -- --watch --coverage src`
 This will trigger all the tests to run, aswel ass display a chart over codecoverage.
 
