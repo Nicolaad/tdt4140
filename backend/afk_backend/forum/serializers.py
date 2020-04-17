@@ -56,7 +56,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
-##used for handling signups
+#used for handling signups
 class UserSerializerWithToken(serializers.HyperlinkedModelSerializer):
     token = serializers.SerializerMethodField()
     password = serializers.CharField(write_only=True)

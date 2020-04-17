@@ -14,7 +14,6 @@ class Comment(models.Model):
     owner = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     thread = models.ForeignKey('Thread', on_delete=models.CASCADE)
    
-
 class threadVote(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
